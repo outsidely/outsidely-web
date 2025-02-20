@@ -23,3 +23,8 @@ label.title {
 div.activity {
   border:1px solid black;
 }
+
+div.dump {
+  font-family:"monospace";
+  display:none;
+}

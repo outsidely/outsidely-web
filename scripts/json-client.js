@@ -53,81 +53,21 @@ function json() {
   };
 
   /********************************
-    TASK CONTROLS
+    ACTIVITIES CONTROLS
   ********************************/
-  // task fields 
-  g.fields.task = ["id","title","completeFlag","assignedUser"];
-  
-  // task object content
-  g.content.task = "";
-  g.content.task += '<div class="ui segment">';
-  g.content.task += '  <h3>Manage your TPS Tasks here.</h3>';
-  g.content.task += '  <p>You can do the following:</p>';
-  g.content.task += '  <ul>';
-  g.content.task += '    <li>Add, Edit and Delete tasks</li>';
-  g.content.task += '    <li>Mark tasks "complete", assign tasks to a user</li>';
-  g.content.task += '    <li>Filter the list by Title, Assigned User, and Completed Status</li>';
-  g.content.task += '  </ul>';
-  g.content.task += '</div>';
-
-  // task object actions
-  g.actions.task = {
-    home:       {target:"app", func:httpGet, href:"/home/", prompt:"Home"}, 
-    tasks:      {target:"app", func:httpGet, href:"/task/", prompt:"Tasks"}, 
-    users:      {target:"app", func:httpGet, href:"/user/", prompt:"Users"},  
-    active:     {target:"list", func:httpGet, href:"/task/?completeFlag=false", prompt:"Active Tasks"}, 
-    closed:     {target:"list", func:httpGet, href:"/task/?completeFlag=true", prompt:"Completed Tasks"}, 
-    byTitle:    {target:"list", func:jsonForm, href:"/task", prompt:"By Title", method:"GET",
-                  args:{
-                    title: {value:"", prompt:"Title", required:true}
-                  }
-                }, 
-    byUser:     {target:"list", func:jsonForm, href:"/task", prompt:"By User", method:"GET",
-                  args:{
-                    assignedUser: {value:"", prompt:"Assigned User", required:true}
-                  }
-                }, 
-    add:        {target:"list", func:jsonForm, href:"/task/", prompt:"Add Task", method:"POST",
-                  args:{
-                    title: {value:"", prompt:"Title", required:true},
-                    completeFlag: {value:"", prompt:"completeFlag"}
-                  }
-                },
-    item:       {target:"item", func:httpGet, href:"/task/{id}", prompt:"Item"},
-    edit:       {target:"single", func:jsonForm, href:"/task/{id}", prompt:"Edit", method:"PUT",
-                  args:{
-                    id: {value:"{id}", prompt:"Id", readOnly:true},
-                    title: {value:"{title}", prompt:"Title", required:true},
-                    completeFlag: {value:"{completeFlag}", prompt:"completeFlag"}
-                  }
-                },
-    delete:     {target:"single", func:httpDelete, href:"/task/{id}", prompt:"Delete", method:"DELETE", args:{}},
-    assign:     {target:"single", func:jsonForm, href:"/task/assign/{id}", prompt:"Assign User", method:"POST",
-                  args:{
-                    id: {value:"{id}", prompt:"Id", readOnly:true},
-                    assignedUser: {value:"{assignedUser}", prompt:"Assigned User", required:true}
-                  }
-                },    
-    completed:  {target:"single", func:jsonForm, href:"/task/completed/{id}", prompt:"Mark Complete", method:"POST"},
-  };
-
-  /********************************
-    USER CONTROLS
-  ********************************/
-  // user fields
-  g.fields.user = ["nick","name","password"];
+  // activities fields
+  g.fields.activities = [
+    "activityType",
+    "ascent",
+    "descent",
+    "distance",
+    "starttime",
+    "time",
+    "timestamp"
+  ];
 
   // user object content
-  g.content.user = "";
-  g.content.user += '<div class="ui segment">';
-  g.content.user += '  <h3>Manage your TPS Users here.</h3>';
-  g.content.user += '  <p>You can do the following:</p>';
-  g.content.user += '  <ul>';
-  g.content.user += '    <li>Add and Edit users</li>';
-  g.content.user += '    <li>Change the password, view the tasks assigned to a user</li>';
-  g.content.user += '    <li>Filter the list by Nickname or FullName</li>';
-  g.content.user += '  </ul>';
-  g.content.user += '</div>';
+  g.content.activities = "";
   
   // user object actions
   g.actions.user = {
@@ -188,10 +128,7 @@ function json() {
   // process loop
   function parseMsg() {
     dump();
-    title();
     setObject();
-    toplinks();
-    content();
     items();
     actions();
     clearForm();
@@ -199,9 +136,7 @@ function json() {
 
   // set response object pointer
   function setObject() {
-    if(g.msg.task) {g.object = "task";}
-    if(g.msg.user) {g.object = "user";}
-    if(g.msg.home) {g.object = "home";}    
+    g.object="activities";
   }
   
   // handle response dump
@@ -209,54 +144,24 @@ function json() {
     var elm = d.find("dump");
     elm.innerText = JSON.stringify(g.msg, null, 2);
   }
-  
-  // handle title
-  function title() {
-    var elm;
     
-    elm = d.find("title");
-    elm.innerText = g.title;
-    
-    elm = d.tags("title");
-    elm[0].innerText = g.title;
-  }
-  
-  // emit links for all views
-  function toplinks() {
-    var act, actions;   
-    var elm, coll;
-    var ul, li, a;
+  // update values
+  function updateValues() {
+    var coll, item, flds;
+    coll = g.msg;
+    flds = g.fields.activities;
 
-    elm = d.find("toplinks");
-    d.clear(elm);
-    menu = d.node("div");
-    menu.className = "ui blue fixed top menu";
-    
-    actions = g.actions[g.object];
-    for(var act in actions) {
-      link = actions[act]
-      if(link.target==="app") {
-        a = d.anchor({
-          href:link.href,
-          rel:(link.rel||"collection"),
-          className:"action item",
-          text:link.prompt
-        });
-        a.onclick = link.func;
-        d.push(a, menu);
+    for(var item of coll) {
+      for(var f of flds) {
+        if(f=="time") {
+          item[f] = formatTime(item[f]);
+          alert(item[f]);
+        }
       }
+  
     }
-    d.push(menu,elm);
+
   }
-  
-  // emit any static content
-  function content() {
-    var elm;
-    
-    elm = d.find("content");
-    elm.innerHTML = g.content[g.object];
-  }
-  
   // handle item collection
   function items() {
     var msg, flds;
@@ -266,29 +171,36 @@ function json() {
     elm = d.find("items");
     d.clear(elm);
     
-    msg = g.msg[g.object];
+    msg = g.msg; //g.msg[g.object];
     flds = g.fields[g.object];
     
     // handle returned objects
     if(msg) {
       coll = msg;
       segments = d.node("div");
-      segments.className = "ui segments";
-
       for(var item of coll) {
         segment = d.node("div");
-        segment.className = "ui segment";
-        menu = d.node("div");
-        menu.className = "ui mini buttons";
-        // emit item-level actions
-        menu = itemActions(menu, item, (coll.length===1));
-        d.push(menu, segment);
+        segment.className = "activity";
 
         table = d.node("table");
         table.className = "ui table";
         // emit the data elements
         for(var f of flds) {
-          tr_data = d.data_row({className:"item "+f, text:f, value:item[f]+"&nbsp;"});
+          switch(f) {
+            case "time":
+              tr_data = d.data_row({className:"item "+f, text:f, value:formatTime(item[f])+"&nbsp;"});            
+              break;
+            case "ascent":
+            case "descent":
+              tr_data = d.data_row({className:"item "+f, text:f, value:metersToFeet(item[f])+"&nbsp;"+"feet"});            
+              break;
+            case "distance":
+              tr_data = d.data_row({className:"item "+f, text:f, value:metersToMiles(item[f])+"&nbsp;"+"miles"});
+              break;            
+            default:
+              tr_data = d.data_row({className:"item "+f, text:f, value:item[f]+"&nbsp;"});            
+              break;
+          }
           d.push(tr_data,table);
         }
         d.push(table,segment);

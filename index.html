@@ -4,10 +4,11 @@
     <link href="styles.css" rel="stylesheet" />
     <script src="scripts/dom-help.js"></script>
     <script src="scripts/json-client.js"></script>
+    <script src="scripts/outsidely-helper.js"></script>
     <script>
       window.onload = function() {
         var pg = json();
-        pg.init("/index.html","");
+        pg.init("https://outsidely-geo-app.azurewebsites.net/api/activities","");
       }
     </script>
   </head>
@@ -24,7 +25,8 @@
     </div>
     <div id="activityFeed">
       <h2>Activity Feed</h2>
-      <div id="feedList">
+      <div id="items">
+        <!--
         <div class="activity">
           <ul>
             <li><label class="title"><span name="title">Biking Today</label></li>
@@ -61,7 +63,13 @@
             </ul>
           </span>
         </div>
+        -->
       </div>
+    </div>
+    <div>
+      <textarea id="dump" cols="50" rows="10">
+
+      </textarea>
     </div>
   </body>
 </html>    
