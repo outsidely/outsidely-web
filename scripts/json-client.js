@@ -29,6 +29,7 @@ function json() {
   
   // control objects
   g.fields = {};
+  g.labels = {};
   g.actions = {};
   g.content = {};
 
@@ -66,6 +67,16 @@ function json() {
     "timestamp"
   ];
 
+  g.labels.activities = [
+    "Activity Type",
+    "Ascent",
+    "DSescent",
+    "Distance",
+    "Start",
+    "Elapsed Time",
+    "Time Stamp"
+  ];
+ 
   // user object content
   g.content.activities = "";
   
@@ -145,26 +156,9 @@ function json() {
     elm.innerText = JSON.stringify(g.msg, null, 2);
   }
     
-  // update values
-  function updateValues() {
-    var coll, item, flds;
-    coll = g.msg;
-    flds = g.fields.activities;
-
-    for(var item of coll) {
-      for(var f of flds) {
-        if(f=="time") {
-          item[f] = formatTime(item[f]);
-          alert(item[f]);
-        }
-      }
-  
-    }
-
-  }
   // handle item collection
   function items() {
-    var msg, flds;
+    var msg, flds, lbls;
     var elm, coll, link;
     var ul, li, dl, dt, dd, p;
 
@@ -173,6 +167,7 @@ function json() {
     
     msg = g.msg; //g.msg[g.object];
     flds = g.fields[g.object];
+    lbls = g.labels[g.object];
     
     // handle returned objects
     if(msg) {
@@ -196,7 +191,11 @@ function json() {
               break;
             case "distance":
               tr_data = d.data_row({className:"item "+f, text:f, value:metersToMiles(item[f])+"&nbsp;"+"miles"});
-              break;            
+              break;    
+            case "starttime":
+            case "timestamp":         
+            tr_data = d.data_row({className:"item "+f, text:f, value:formatDate(item[f])+"&nbsp;"});
+            break;  
             default:
               tr_data = d.data_row({className:"item "+f, text:f, value:item[f]+"&nbsp;"});            
               break;
