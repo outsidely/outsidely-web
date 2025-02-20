@@ -32,3 +32,7 @@ function metersToMiles(meters) {
     return Math.ceil(meters*0.000621371192);
 }
   
+function metersToKilometers(meters) {
+    return Math.ceil(meters / 1000);
+}
+  
