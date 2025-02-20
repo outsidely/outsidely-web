@@ -10,12 +10,6 @@
   - has fatal dependency on dom-help.js
   - uses no external libs/frameworks
   - built/tested for chrome browser (YMMV on other browsers)
-
-  ISSUES:
-  - memorized the serialized msg for "task" and "user" object array & selected fields
-  - memorized all 18 documented actions and associated args, HTTP details
-  - will ignore non-breaking changes from server (new actions, objects, fields)
-  - may crash on breaking changes from server (changed actions, objects, fields)
 */
 
 function json() {

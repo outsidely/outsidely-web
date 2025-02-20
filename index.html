@@ -2,6 +2,14 @@
   <head>
     <title>Outsidely</title>
     <link href="styles.css" rel="stylesheet" />
+    <script src="scripts/dom-help.js"  />
+    <script src="scripts/json-client.js" />
+    <script>
+      window.onload = function() {
+        var pg = json();
+        pg.init("/index.html","");
+      }
+    </script>
   </head>
   <body>
     <h1>Outsidely</h1>
