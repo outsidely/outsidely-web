@@ -2,14 +2,13 @@
  * json-client HTML/SPA client engine
  * June 2015
  * Mike Amundsen (@mamund)
- * Soundtrack : Ornette Coleman Six Classic Albums (2012)
  *******************************************************/
 
 /*  
   NOTE:
-  - has fatal dependency on dom-help.js
+  - has dependency on dom-help.js
+  - config file(s) [activities] holds details
   - uses no external libs/frameworks
-  - built/tested for chrome browser (YMMV on other browsers)
 */
 
 function json() {
@@ -54,67 +53,6 @@ function json() {
   };
 
   /********************************
-    ACTIVITIES CONTROLS
-  ********************************/
-
-  // activities fields
-  g.fields.activities = [
-    {field:"PartitionKey",prompt:"UserID",type:""},
-    {field:"activityType",prompt:"Activity",type:""},
-    {field:"ascent",prompt:"Ascent",type:"feet"},
-    {field:"descent",prompt:"Descent",type:"feet"},
-    {field:"distance",prompt:"Distance",type:"distance"},
-    {field:"starttime",prompt:"Start",type:"datetime"},
-    {field:"time",prompt:"Elapsed Time",type:"time"},
-    {field:"timestamp",prompt:"Time Stamp",type:"datetime"}
-  ];
- 
-  // user object content
-  g.content.activities = "";
-  
-  // user object actions
-  /*
-  g.actions.user = {
-    home:       {target:"app", func:httpGet, href:"/home/", prompt:"Home"}, 
-    tasks:      {target:"app", func:httpGet, href:"/task/", prompt:"Tasks"}, 
-    users:      {target:"app", func:httpGet, href:"/user/", prompt:"Users"},  
-    byNick:     {target:"list", func:jsonForm, href:"/user", prompt:"By Nickname", method:"GET",
-                  args:{
-                    nick: {value:"", prompt:"Nickname", required:true}
-                  }
-                }, 
-    byName:     {target:"list", func:jsonForm, href:"/user", prompt:"By Name", method:"GET",
-                  args:{
-                    name: {value:"", prompt:"Name", required:true}
-                  }
-                }, 
-    add:        {target:"list", func:jsonForm, href:"/user/", prompt:"Add User", method:"POST",
-                  args:{
-                    nick: {value:"", prompt:"Nickname", required:true, pattern:"[a-zA-Z0-9]+"},
-                    password: {value:"", prompt:"Password", required:true, pattern:"[a-zA-Z0-9!@#$%^&*-]+"},
-                    name: {value:"", prompt:"Full Name", required:true},
-                  }
-                },
-    item:       {target:"item", func:httpGet, href:"/user/{id}", prompt:"Item"},
-    edit:       {target:"single", func:jsonForm, href:"/user/{id}", prompt:"Edit", method:"PUT",
-                  args:{
-                    nick: {value:"{nick}", prompt:"Nickname", readOnly:true},
-                    name: {value:"{name}", prompt:"Full Name",required:true}
-                  }
-                },
-    changepw:   {target:"single", func:jsonForm, href:"/task/pass/{id}", prompt:"Change Password", method:"POST",
-                  args:{
-                    nick: {value:"{nick}", prompt:"NickName", readOnly:true},
-                    oldPass: {value:"", prompt:"Old Password", required:true, pattern:"[a-zA-Z0-9!@#$%^&*-]+"},
-                    newPass: {value:"", prompt:"New Password", required:true, pattern:"[a-zA-Z0-9!@#$%^&*-]+"},
-                    checkPass: {value:"", prompt:"Confirm New", required:true, pattern:"[a-zA-Z0-9!@#$%^&*-]+"},
-                  }
-                },    
-    assigned:   {target:"single", func:httpGet, href:"/task/?assignedUser={id}", prompt:"Assigned Tasks"}
-  };
-  */
-
-  /********************************
     MAIN CODE
   ********************************/
   // init library and start
@@ -157,7 +95,7 @@ function json() {
     d.clear(elm);
     
     msg = g.msg; 
-    flds = g.fields[g.object];
+    flds = activities.fields; //[g.object];
     
     // handle returned objects
     if(msg) {
