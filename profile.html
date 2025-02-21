@@ -9,29 +9,27 @@
     <span id="tag">Acting outsidely every day</span>
     <div id="commands">
       <ul class="menu">
-        <li><input type="button" value="SignIn" /></li>
-        <li><a href="index.html"><input type="button" value="Feed" /></a></li>
-        <li><a href="upload.html"><input type="button" value="Upload" /></a></li>
-        <li><a href="profile.html"><input type="button" value="Profile" /></a></li>
+        <li><input type="button" value="SignIn" class="button" /></li>
+        <li><a href="index.html"><input type="button" value="Feed" class="button"/></a></li>
+        <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
+        <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
       </ul>
     </div>
     <div id="userProfile">
       <h2>User Profile</h2>
       <ul class="menu">
-        <li><a href="profile.html"><input type="button" value="Personal"></a></li>
-        <li><a href="gear.html"><input type="button" value="Gear"></a></li>
+        <li><a href="gear.html"><input type="button" value="Gear" class="button"></a></li>
       </ul>
       <div id="profile">
-        <h3>Profile</h3>
-      <form name="profileForm" action="#" enc-type="application/x-www-form-urlencoded">
-        <ul>
-          <li><label>First Name:</label><input name="firstName" size="12"/></li>
-          <li><label>Last Name:</label><input name="lastName"size="24"/></li>
-          <li><label>Email:</label><input type="email" name="email"/></li>
-          <li><label>UserID:</label><input name="userid" size="8"/></li>
-          <li><label></label><input type="submit"/></li>
-        </ul>
-      </form>
+        <form name="profileForm" action="#" enc-type="application/x-www-form-urlencoded">
+          <ul>
+            <li><label>First Name:</label><input name="firstname" size="12"/></li>
+            <li><label>Last Name:</label><input name="lastname"size="24"/></li>
+            <li><label>Email:</label><input type="email" name="email"/></li>
+            <li><label>UserID:</label><input name="userid" size="8"/></li>
+            <li><label></label><input type="submit" class="button"/></li>
+          </ul>
+        </form>
       </div>
     </div>
   </body>

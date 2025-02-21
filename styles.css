@@ -7,19 +7,22 @@
 */
 body {
   font-size:medium;
+  font-family: "sans-serif";
 }
 
 /* Media query for viewport  width less than 600px */
   @media (max-width: 600px) { 
   body {
     font-size: x-large;
+    font-family: "sans-serif";
   }
 } 
    
  /* Media query for viewport width greater than 1200px */
 @media (min-width: 1200px) { 
   body { 
-        font-size: medium; 
+    font-size: medium; 
+    font-family: "sans-serif";
   } 
 }
  
@@ -33,6 +36,7 @@ label {
 }
 ul.menu li {
   display:inline;
+  font-size: larger;
 }
 #tag {
   margin-top: 0px;
@@ -49,6 +53,9 @@ div.activity {
   border:1px solid black;
 }
 
+.button {
+  font-size:x-large;
+}
 img {
  width:80%
 }

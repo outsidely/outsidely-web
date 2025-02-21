@@ -9,10 +9,10 @@
     <span id="tag">Acting outsidely every day</span>
     <div id="commands">
       <ul class="menu">
-        <li><input type="button" value="SignIn" /></li>
-        <li><a href="index.html"><input type="button" value="Feed" /></a></li>
-        <li><a href="upload.html"><input type="button" value="Upload" /></a></li>
-        <li><a href="profile.html"><input type="button" value="Profile" /></a></li>
+        <li><input type="button" value="SignIn" class="button"/></li>
+        <li><a href="index.html"><input type="button" value="Feed" class="button"/></a></li>
+        <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
+        <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
       </ul>
     </div>
     <div id="activityUpload">
@@ -25,7 +25,7 @@
           <li><label>Title:</label><input name="title" /></li>
           <li>
             <label>Activity:</label>
-              <select name="activitytype">
+              <select name="activitytype" class="button">
                 <option value="ride">Ride</option>
                 <option value="run">Run</option>
                 <option value="other">Other</option>
@@ -33,16 +33,16 @@
           </li>
           <li>
             <label>Gear:</label>
-              <select name="gear">
+              <select name="gear" class="button">
                 <option value="gravel">Gravel Bike</option>
                 <option value="road">Road Bike</option>
                 <option value="mtb">MTB</option>
                 <option value="shoes">Shoes</option>
               </select>
           </li>
-          <li><label>Description:</label><textarea name="description" cols=30 rows=8></textarea></li>
-          <li><label>GPX File:</label><input name="upload" type="file" accept="application/gpx+xml"/></li>
-          <li><label></label><a href="index.html"><input type="submit"/></a></li>
+          <li><label>Notes:</label><textarea name="description" cols=30 rows=8></textarea></li>
+          <li><label>GPX:</label><input name="upload" type="file" accept="application/gpx+xml"  class="button"/></li>
+          <li><label></label><a href="index.html"><input type="submit" class="button"/></a></li>
         </ul>
       </form>
     </div>
