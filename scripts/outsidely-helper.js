@@ -60,7 +60,12 @@ function metersToFeet(meters) {
 function metersToMiles(meters) {
   var rtn = "";
   if(meters) {
-    rtn = Math.ceil(meters*0.000621371192).toString()+ " miles";
+    //rtn = Math.ceil(meters*0.000621371192).toString()+ " miles";
+    rtn = meters*0.000621371192;
+    rtn = rtn*10;
+    rtn = Math.round(rtn);
+    rtn = rtn/10;
+    rtn = rtn.toString() + " miles";
   }
   return rtn;
 }
