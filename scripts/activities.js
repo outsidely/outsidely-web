@@ -5,16 +5,18 @@
   var activities = {}
   
   // activities fields
+  /*
+    {field:"timestamp",prompt:"Time Stamp",type:"datetime"},
+    {field:"activityid",prompt:"ActivityID",type:""},
+    {field:"descent",prompt:"Descent",type:"feet"},
+  */
   activities.fields = [
     {field:"userid",prompt:"UserID",type:""},
     {field:"activitytype",prompt:"Activity",type:""},
     {field:"starttime",prompt:"Start",type:"datetime"},
     {field:"distance",prompt:"Distance",type:"distance"},
-    {field:"time",prompt:"Elapsed Time",type:"time"},
-    {field:"ascent",prompt:"Ascent",type:"feet"},
-    {field:"descent",prompt:"Descent",type:"feet"},
-    {field:"timestamp",prompt:"Time Stamp",type:"datetime"},
-    {field:"activityid",prompt:"ActivityID",type:""},
+    {field:"time",prompt:"Time",type:"time"},
+    {field:"ascent",prompt:"Elevation",type:"feet"},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
  
