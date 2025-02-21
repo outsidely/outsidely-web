@@ -115,16 +115,17 @@ function json() {
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatTime(item[f.field])+"&nbsp;"});            
               break;
             case "feet":
-            case "feet":
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToFeet(item[f.field])+"&nbsp;"});            
               break;
             case "distance":
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToMiles(item[f.field])+"&nbsp;"});
               break;    
-            case "datetime":
             case "datetime":         
-            tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
-            break;  
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
+              break;  
+            case "image":         
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="https://outsidely-geo-app.azurewebsites.net/api/' + item[f.field]+'">'});
+              break;  
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;

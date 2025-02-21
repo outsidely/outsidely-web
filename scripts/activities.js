@@ -12,7 +12,8 @@
     {field:"distance",prompt:"Distance",type:"distance"},
     {field:"starttime",prompt:"Start",type:"datetime"},
     {field:"time",prompt:"Elapsed Time",type:"time"},
-    {field:"timestamp",prompt:"Time Stamp",type:"datetime"}
+    {field:"timestamp",prompt:"Time Stamp",type:"datetime"},
+    {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
  
   // user object content
