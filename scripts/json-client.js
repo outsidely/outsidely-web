@@ -56,31 +56,24 @@ function json() {
   /********************************
     ACTIVITIES CONTROLS
   ********************************/
+
   // activities fields
   g.fields.activities = [
-    "activityType",
-    "ascent",
-    "descent",
-    "distance",
-    "starttime",
-    "time",
-    "timestamp"
-  ];
-
-  g.labels.activities = [
-    "Activity Type",
-    "Ascent",
-    "DSescent",
-    "Distance",
-    "Start",
-    "Elapsed Time",
-    "Time Stamp"
+    {field:"PartitionKey",prompt:"UserID",type:""},
+    {field:"activityType",prompt:"Activity",type:""},
+    {field:"ascent",prompt:"Ascent",type:"feet"},
+    {field:"descent",prompt:"Descent",type:"feet"},
+    {field:"distance",prompt:"Distance",type:"distance"},
+    {field:"starttime",prompt:"Start",type:"datetime"},
+    {field:"time",prompt:"Elapsed Time",type:"time"},
+    {field:"timestamp",prompt:"Time Stamp",type:"datetime"}
   ];
  
   // user object content
   g.content.activities = "";
   
   // user object actions
+  /*
   g.actions.user = {
     home:       {target:"app", func:httpGet, href:"/home/", prompt:"Home"}, 
     tasks:      {target:"app", func:httpGet, href:"/task/", prompt:"Tasks"}, 
@@ -119,7 +112,7 @@ function json() {
                 },    
     assigned:   {target:"single", func:httpGet, href:"/task/?assignedUser={id}", prompt:"Assigned Tasks"}
   };
-  
+  */
 
   /********************************
     MAIN CODE
@@ -158,16 +151,13 @@ function json() {
     
   // handle item collection
   function items() {
-    var msg, flds, lbls;
-    var elm, coll, link;
-    var ul, li, dl, dt, dd, p;
+    var msg, flds, elm, coll;
 
     elm = d.find("items");
     d.clear(elm);
     
-    msg = g.msg; //g.msg[g.object];
+    msg = g.msg; 
     flds = g.fields[g.object];
-    lbls = g.labels[g.object];
     
     // handle returned objects
     if(msg) {
@@ -179,25 +169,26 @@ function json() {
 
         table = d.node("table");
         table.className = "ui table";
+
         // emit the data elements
         for(var f of flds) {
-          switch(f) {
+          switch(f.type) {
             case "time":
-              tr_data = d.data_row({className:"item "+f, text:f, value:formatTime(item[f])+"&nbsp;"});            
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatTime(item[f.field])+"&nbsp;"});            
               break;
-            case "ascent":
-            case "descent":
-              tr_data = d.data_row({className:"item "+f, text:f, value:metersToFeet(item[f])+"&nbsp;"+"feet"});            
+            case "feet":
+            case "feet":
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToFeet(item[f.field])+"&nbsp;"});            
               break;
             case "distance":
-              tr_data = d.data_row({className:"item "+f, text:f, value:metersToMiles(item[f])+"&nbsp;"+"miles"});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToMiles(item[f.field])+"&nbsp;"});
               break;    
-            case "starttime":
-            case "timestamp":         
-            tr_data = d.data_row({className:"item "+f, text:f, value:formatDate(item[f])+"&nbsp;"});
+            case "datetime":
+            case "datetime":         
+            tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
             break;  
             default:
-              tr_data = d.data_row({className:"item "+f, text:f, value:item[f]+"&nbsp;"});            
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;
           }
           d.push(tr_data,table);
@@ -294,7 +285,9 @@ function json() {
     
     elm = d.find("form");
     d.clear(elm);
-    elm.style.display = "none";
+    if(elm) {
+      elm.style.display = "none";
+    }
   }
   
   // generate a form for user input

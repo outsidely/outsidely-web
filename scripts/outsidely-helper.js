@@ -8,15 +8,19 @@
   console.log(formattedTime); // Output: 02:05:00
 */
 function formatTime(seconds) {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const remainingSeconds = seconds % 60;
-  
-    const formattedHours = String(hours).padStart(2, '0');
-    const formattedMinutes = String(minutes).padStart(2, '0');
-    const formattedSeconds = String(remainingSeconds).padStart(2, '0');
-  
-    return `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+    var rtn = "";
+    if(seconds) {
+      const hours = Math.floor(seconds / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const remainingSeconds = seconds % 60;
+    
+      const formattedHours = String(hours).padStart(2, '0');
+      const formattedMinutes = String(minutes).padStart(2, '0');
+      const formattedSeconds = String(remainingSeconds).padStart(2, '0');
+    
+      rtn = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;  
+    } 
+    return rtn;
   }
 
 /* Example usage:
@@ -25,14 +29,17 @@ function formatTime(seconds) {
   console.log(formattedDate); // Output: 20-02-2025 10:30:45
 */
 function formatDate(isoDateString, format) {
-  const date = new Date(isoDateString);
-  const day = String(date.getDate()).padStart(2, '0');
-  const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
-  const year = date.getFullYear();
-  const hours = String(date.getHours()).padStart(2, '0');
-  const minutes = String(date.getMinutes()).padStart(2, '0');
-  const seconds = String(date.getSeconds()).padStart(2, '0');
-  const fmtDate = format || `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+  var fmtDate = "";
+  if(isoDateString) {
+    const date = new Date(isoDateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+    const year = date.getFullYear();
+    const hours = String(date.getHours()).padStart(2, '0');
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const seconds = String(date.getSeconds()).padStart(2, '0');
+    fmtDate = format || `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;  
+  }
 
   return fmtDate;
 }
@@ -43,14 +50,26 @@ function formatDate(isoDateString, format) {
   console.log(meters + " meters is equal to " + feet + " feet");
  */ 
 function metersToFeet(meters) {
-  return Math.ceil(meters * 3.28084);
+  var rtn = "";
+  if(meters) {
+  rtn = Math.ceil(meters * 3.28084).toString()+ " feet";
+  } 
+  return rtn;
 }
 
 function metersToMiles(meters) {
-    return Math.ceil(meters*0.000621371192);
+  var rtn = "";
+  if(meters) {
+    rtn = Math.ceil(meters*0.000621371192).toString()+ " miles";
+  }
+  return rtn;
 }
   
 function metersToKilometers(meters) {
-    return Math.ceil(meters / 1000);
+  var rtn = "";
+  if (meters) {
+    rtn = Math.ceil(meters / 1000).toString() + " km";
+  } 
+  return "";
 }
   

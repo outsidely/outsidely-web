@@ -152,9 +152,11 @@ function domHelp() {
   }
 
   function clear(elm) {
-    while (elm.firstChild) {
-      elm.removeChild(elm.firstChild);
-    }
+    try {
+      while (elm.firstChild) {
+        elm.removeChild(elm.firstChild);
+      }  
+    } catch(e) {}
   }
 
   // publish functions

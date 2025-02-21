@@ -16,9 +16,11 @@
     </div>
     <div id="activityUpload">
       <h2>Upload Activity</h2>
-      <form name="activityForm" method="post" action="https://outsidely-geo-app.azurewebsites.net/api/uploadActivity" enctype="multipart/form-data">
+      <form name="activityForm" method="post" target="results" 
+        action="https://outsidely-geo-app.azurewebsites.net/api/uploadActivity" 
+        enctype="multipart/form-data">
         <ul>
-          <li><label>UserID:</label><input name"userId /></li>
+          <li><label>UserID:</label><input name="userId" /></li>
           <li><label>Title:</label><input name="title" /></li>
           <li>
             <label>Activity:</label>
@@ -41,6 +43,11 @@
           <li><label></label><a href="index.html"><input type="submit"/></a></li>
         </ul>
       </form>
+    </div>
+    <div>
+      <iframe name="results" width="60% height=200px">
+
+      </iframe>
     </div>
   </body>
 </html>    
