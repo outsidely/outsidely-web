@@ -1,0 +1,30 @@
+ul {
+  list-style-type: none;
+}
+label {
+  display:inline-block;
+  width: 150px;
+  vertical-align: top;
+}
+ul.menu li {
+  display:inline;
+}
+#tag {
+  margin-top: 0px;
+  font-style: italic;
+}
+h1 {
+  margin-bottom: 0px;
+}
+label.title {
+  font-weight: bold;
+  font-size: larger;
+}
+div.activity {
+  border:1px solid black;
+}
+
+div.dump {
+  font-family:"monospace";
+  display:none;
+}
