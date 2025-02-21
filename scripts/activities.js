@@ -5,14 +5,15 @@
   var activities = {}
   // activities fields
   activities.fields = [
-    {field:"PartitionKey",prompt:"UserID",type:""},
-    {field:"activityType",prompt:"Activity",type:""},
+    {field:"userid",prompt:"UserID",type:""},
+    {field:"activitytype",prompt:"Activity",type:""},
+    {field:"starttime",prompt:"Start",type:"datetime"},
+    {field:"distance",prompt:"Distance",type:"distance"},
+    {field:"time",prompt:"Elapsed Time",type:"time"},
     {field:"ascent",prompt:"Ascent",type:"feet"},
     {field:"descent",prompt:"Descent",type:"feet"},
-    {field:"distance",prompt:"Distance",type:"distance"},
-    {field:"starttime",prompt:"Start",type:"datetime"},
-    {field:"time",prompt:"Elapsed Time",type:"time"},
     {field:"timestamp",prompt:"Time Stamp",type:"datetime"},
+    {field:"activityid",prompt:"ActivityID",type:""},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
  
