@@ -72,7 +72,7 @@ function metersToMiles(meters) {
 function metersToKilometers(meters) {
   var rtn = "";
   if (meters) {
-    rtn = Math.ceil(meters / 1000).toString() + " km";
+    rtn = Math.round(meters / 1000).toString() + " km";
   } 
   return "";
 }
