@@ -3,6 +3,7 @@
   ********************************/
 
   var activities = {}
+  
   // activities fields
   activities.fields = [
     {field:"userid",prompt:"UserID",type:""},

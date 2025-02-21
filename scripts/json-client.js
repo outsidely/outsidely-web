@@ -25,6 +25,7 @@ function json() {
   g.atype = "application/json";
   g.ctype = "application/json";
   g.object = "";
+  g.rootURL = "";
   
   // control objects
   g.fields = {};
@@ -56,13 +57,15 @@ function json() {
     MAIN CODE
   ********************************/
   // init library and start
-  function init(url, title) {
-    if(!url || url==='') {
+  //args.url, args.title, args.rootURL)
+  function init(args) {
+    if(!args.url || args.url==='') {
       alert('*** ERROR:\n\nMUST pass starting URL to the library');
     }
     else {
-      g.title = title||"JSON Client";
-      g.url = url;
+      g.title = args.title||"JSON Client";
+      g.url = args.url;
+      g.rootURL = args.rootURL || "";
       req(g.url,"get");
     }
   }
@@ -124,7 +127,7 @@ function json() {
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
               break;  
             case "image":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="https://outsidely-geo-app.azurewebsites.net/api/' + item[f.field]+'">'});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'">'});
               break;  
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            

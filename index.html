@@ -9,7 +9,11 @@
     <script>
       window.onload = function() {
         var pg = json();
-        pg.init("https://outsidely-geo-app.azurewebsites.net/api/activities","");
+        var args = {};
+        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities";
+        args.title = "";
+        args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
+        pg.init(args);
       }
     </script>
   </head>
