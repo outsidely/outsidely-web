@@ -77,6 +77,10 @@ img {
  width:80%
 }
 
+tr.wrap:nth-child(2) {
+  text-wrap:wrap;
+  width: 10%;
+}
 div.dump {
   font-family:"monospace";
   display:none;

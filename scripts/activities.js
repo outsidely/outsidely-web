@@ -20,7 +20,7 @@
     {field:"time",prompt:"Time",type:"time"},
     {field:"pace",prompt:"Pace",type:"pace"},
     {field:"ascent",prompt:"Elevation",type:"feet"},
-    {field:"description",prompt:"Notes",type:""},
+    {field:"description",prompt:"Notes",type:"wrap"},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
  

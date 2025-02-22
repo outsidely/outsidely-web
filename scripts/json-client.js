@@ -135,8 +135,8 @@ function json() {
               case "pace":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computePace(item["time"], item["distance"])+"&nbsp;"});
               break;  
-            case "textarea":  
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTextArea(item[f.field]+"&nbsp;")});            
+            case "wrap":  
+              tr_data = d.data_row({className:"item wrap "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
