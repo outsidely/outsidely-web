@@ -7,6 +7,7 @@ simple HTML-based client for the outsidely API
  * Implement validation list for activity type
    * https://outsidely-geo-app.azurewebsites.net/api/validations/activitytype
  * Improve acitivity list display (too many fields, merge, remove, etc.)
+   * https://outsidely-geo-app.azurewebsites.net/api/activities 
    * firstname, lastname (userid)
    * distance time (pace)
    * add support for title (from server?)
