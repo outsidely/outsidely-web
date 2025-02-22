@@ -16,6 +16,7 @@
     {field:"starttime",prompt:"Start",type:"datetime"},
     {field:"distance",prompt:"Distance",type:"distance"},
     {field:"time",prompt:"Time",type:"time"},
+    {field:"pace",prompt:"Pace",type:"pace"},
     {field:"ascent",prompt:"Elevation",type:"feet"},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];

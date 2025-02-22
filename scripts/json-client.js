@@ -132,6 +132,9 @@ function json() {
               case "activity":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field])+"&nbsp;"});
               break;  
+              case "pace":         
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computePace(item["time"], item["distance"])+"&nbsp;"});
+              break;  
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;

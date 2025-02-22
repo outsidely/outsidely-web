@@ -57,24 +57,57 @@ function metersToFeet(meters) {
   return rtn;
 }
 
-function metersToMiles(meters) {
+function metersToMiles(meters, noLabel) {
   var rtn = "";
   if(meters) {
     rtn = meters*0.000621371192;
     rtn = rtn*10;
     rtn = Math.round(rtn);
     rtn = rtn/10;
-    rtn = rtn.toString() + " miles";
+    if(noLabel==true) {
+      rtn = rtn;
+    } else {
+      rtn = rtn.toString() + " miles";
+    }
   }
   return rtn;
 }
   
-function metersToKilometers(meters) {
+function computePace(time, length, unit) { 
+  var rtn = "";
+  var unt = "";
+  var distance = 0;
+
+  if(time && length) {
+    unt = unit || "mi";
+    var totalSeconds = time;
+
+    if(unt==="mi") {
+      distance = metersToMiles(length,true);
+    } else {
+      distance = metersToKilometers(length,true);
+    }
+    const secondsPerDistance = totalSeconds / distance;
+  
+    const minutes = Math.floor(secondsPerDistance / 60);
+    const seconds = Math.round(secondsPerDistance % 60);
+  
+    const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
+    rtn = minutes + ":" + formattedSeconds + "/mi"; 
+  }
+  return rtn
+}
+
+function metersToKilometers(meters, noLabel) {
   var rtn = "";
   if (meters) {
-    rtn = Math.round(meters / 1000).toString() + " km";
+    if(noLabel===true) {
+      rtn = Math.round(meters / 1000);
+    } else {
+      rtn = Math.round(meters / 1000).toString() + " km";
+    }    
   } 
-  return "";
+  return rtn;
 }
   
 function selectActivity(value) {
