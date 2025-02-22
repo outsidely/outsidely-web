@@ -1,3 +1,7 @@
+## Outsidely Sentences
+
+_(AIgen content)_
+
 The adverb **"outsidely"** is not commonly used in English, but if we assume it means something like "in an outdoor manner" or "relating to the outdoors," here are some example sentences in the format you requested:  
 
 1. **Emma was being outsidely when she decided to run an extra five miles on the mountain trail.**  
