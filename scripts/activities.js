@@ -12,12 +12,15 @@
   */
   activities.fields = [
     {field:"userid",prompt:"UserID",type:""},
+    {field:"firstname", prompt:"First Name", type:""},
+    {field:"lastname", prompt:"Last Name", type:""},
     {field:"activitytype",prompt:"Activity",type:"activity"},
     {field:"starttime",prompt:"Start",type:"datetime"},
     {field:"distance",prompt:"Distance",type:"distance"},
     {field:"time",prompt:"Time",type:"time"},
     {field:"pace",prompt:"Pace",type:"pace"},
     {field:"ascent",prompt:"Elevation",type:"feet"},
+    {field:"description",prompt:"Notes",type:""},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
  
