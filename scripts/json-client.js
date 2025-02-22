@@ -32,6 +32,7 @@ function json() {
   g.labels = {};
   g.actions = {};
   g.content = {};
+  g.activityList = [];
 
   /********************************
     HOME CONTROLS
@@ -74,7 +75,7 @@ function json() {
   function parseMsg() {
     dump();
     setObject();
-    items();
+    loadData();
     actions();
     clearForm();
   }
@@ -89,7 +90,27 @@ function json() {
     var elm = d.find("dump");
     elm.innerText = JSON.stringify(g.msg, null, 2);
   }
-    
+
+  function loadData() {
+    var url = "https://outsidely-geo-app.azurewebsites.net/api/validations/activitytype";
+    req(url, "get", null, loadDataRsp);
+  }
+  function loadDataRsp(ajax) {
+    if(ajax.readyState===4) {
+      g.activityList = JSON.parse(ajax.responseText);
+    }
+    g.activityList.sort((a,b) => {
+      if(a.sort < b.sort) {
+        return -1;
+      }
+      if(a.sort > b.sort) {
+        return 1;
+      }
+      return 0;
+    });
+    items();
+  }
+
   // handle item collection
   function items() {
     var msg, flds, elm, coll;
@@ -130,7 +151,7 @@ function json() {
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'">'});
               break;  
               case "activity":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field])+"&nbsp;"});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field],g.activityList)+"&nbsp;"});
               break;  
               case "pace":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computePace(item["time"], item["distance"])+"&nbsp;"});
@@ -380,9 +401,13 @@ function json() {
   }
 
   // low-level HTTP stuff
-  function req(url, method, body) {
+  function req(url, method, body, next) {
     var ajax = new XMLHttpRequest();
-    ajax.onreadystatechange = function(){rsp(ajax)};
+    if(next) {
+      ajax.onreadystatechange = function(){next(ajax)};
+    } else {
+      ajax.onreadystatechange = function(){rsp(ajax)};
+    }
     ajax.open(method, url);
     ajax.setRequestHeader("accept",g.atype);
     if(body && body!==null) {
