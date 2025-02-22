@@ -1,3 +1,15 @@
 # outsidely-web
 
 simple HTML-based client for the outsidely API
+
+## Work Items
+
+ * Implement validation list for activity type
+   * https://outsidely-geo-app.azurewebsites.net/api/validations/activitytype
+ * Improve acitivity list display (too many fields, merge, remove, etc.)
+   * firstname, lastname (userid)
+   * distance time (pace)
+   * add support for title (from server?)
+   * prep for server handling computaitons (mi/km, pace, etc.)
+   * notes/description in wrapping textarea(?)
+ * implement randomizer for "outsidely" sentences (low priority)
