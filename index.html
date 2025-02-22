@@ -9,6 +9,7 @@
     <script src="scripts/json-client.js"></script>
     <script src="scripts/activities.js"></script>
     <script src="scripts/outsidely-helper.js"></script>
+    <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
         var pg = json();
@@ -17,7 +18,12 @@
         args.title = "";
         args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
         pg.init(args);
-      }
+
+        var elm = document.getElementById("tag");
+        if(elm) {
+          elm.innerText=getRandomSentence();
+        }
+      };
     </script>
   </head>
   <body>

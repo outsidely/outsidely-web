@@ -4,6 +4,15 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" sizes="196x196" href="images/outsidely.png">
     <link href="styles.css" rel="stylesheet" />
+    <script src="scripts/sentences.js"></script>
+    <script>
+      window.onload = function() {
+        var elm = document.getElementById("tag");
+        if(elm) {
+          elm.innerText=getRandomSentence();
+        }
+      };
+    </script>
   </head>
   <body>
     <!--
