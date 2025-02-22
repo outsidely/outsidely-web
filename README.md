@@ -14,6 +14,6 @@ simple HTML-based client for the outsidely API
    * prep for server handling computaitons (mi/km, pace, etc.)
    * notes/description in wrapping textarea(?)
  * add logo to header displays
-  * https://github.com/outsidely/outsidely-web/blob/master/images/logo.png
+   * https://github.com/outsidely/outsidely-web/blob/master/images/logo.png
  * implement randomizer for "outsidely" sentences (low priority)
    * https://github.com/outsidely/outsidely-web/blob/master/2025-02-22-being-outsidely.md
