@@ -12,7 +12,7 @@
   */
   activities.fields = [
     {field:"userid",prompt:"UserID",type:""},
-    {field:"activitytype",prompt:"Activity",type:""},
+    {field:"activitytype",prompt:"Activity",type:"activity"},
     {field:"starttime",prompt:"Start",type:"datetime"},
     {field:"distance",prompt:"Distance",type:"distance"},
     {field:"time",prompt:"Time",type:"time"},

@@ -77,3 +77,17 @@ function metersToKilometers(meters) {
   return "";
 }
   
+function selectActivity(value) {
+  var rtn = value;
+  var actTypes = [
+    {name:"run",value:"Run"},
+    {name:"ride",value:"Ride"},
+    {name:"other",value:"Other"}
+  ]
+  for(var t in actTypes) {
+    if(value==actTypes[t].name) {
+      rtn = actTypes[t].value;
+    }
+  }
+  return rtn;
+}

@@ -129,6 +129,9 @@ function json() {
             case "image":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'">'});
               break;  
+              case "activity":         
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field])+"&nbsp;"});
+              break;  
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;
