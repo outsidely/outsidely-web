@@ -153,6 +153,9 @@ function json() {
             case "datetime":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
               break;  
+              case "datewords":         
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDateWords(item[f.field])+"&nbsp;"});
+              break;  
             case "image":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<a href="details.html" ><img src="' + g.rootURL + item[f.field]+'" class="map"></a>'});
               break;  

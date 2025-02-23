@@ -18,7 +18,7 @@
   */
   activities.fields = [
     {field:"name",prompt:"Name",type:"name"},
-    {field:"starttime",prompt:"Date",type:"datetime"},
+    {field:"starttime",prompt:"Date",type:"datewords"},
     {field:"stats",prompt:"Stats", type:"stats"},
     {field:"time",prompt:"Time",type:"time"},
     {field:"ascent",prompt:"Elevation",type:"feet"},

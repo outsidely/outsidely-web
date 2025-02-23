@@ -44,7 +44,22 @@ function formatDate(isoDateString, format) {
 
   return fmtDate;
 }
+
+function formatDateWords(isoDateString, format) {
+  var fmtDate = "";
   
+  if(isoDateString) {
+    const date = new Date(isoDateString);
+    const options= {
+      weekday:"long", year:"numeric", month:"long", day:"numeric",
+      hour:"numeric", minute:"numeric"
+    };
+    fmtDate = date.toLocaleDateString(undefined, options);
+  }
+  return fmtDate;
+}
+
+
 /*
   let meters = 10;
   let feet = metersToFeet(meters);
