@@ -30,6 +30,7 @@ function formatTime(seconds) {
 */
 function formatDate(isoDateString, format) {
   var fmtDate = "";
+  
   if(isoDateString) {
     const date = new Date(isoDateString);
     const day = String(date.getDate()).padStart(2, '0');
@@ -124,6 +125,42 @@ function computePace(time, length, units) {
     rtn = minutes + ":" + formattedSeconds + "/" + unt; 
   }
   return rtn
+}
+
+function formatName(firstname, lastname, userid) {
+  var rtn = "";
+  if(firstname && lastname) {
+    rtn = firstname + "&nbsp;" + lastname;
+  } else {
+    rtn = userid || "Guest";
+  }
+  return rtn;
+} 
+
+function formatStats(distance, time, units) {
+  var rtn = "";
+  var meters = 0
+  var seconds = time;
+  var unt = units || "miles";
+  var distString = "";
+  var paceString = "";
+  var speedString = "";
+
+  if(distance && time) {
+    meters = distance;
+    seconds = time;
+    if(unt==="miles") {
+      distString = metersToMiles(meters);
+      paceString = computePace(seconds,meters);
+      speedString = computeSpeed(meters, seconds);
+    } else {
+      distString = metersToKilometers(meters);
+      paceString  = computePace(seconds, meters, "km");
+      speedString = computeSpeed(meters, seconds, "kph");
+    }
+    rtn = distString + "&nbsp;" + paceString + "&nbsp;" + speedString;
+  }
+  return rtn;
 }
 
 function setTextArea(value) {

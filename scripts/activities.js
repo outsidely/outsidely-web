@@ -9,17 +9,19 @@
     {field:"timestamp",prompt:"Time Stamp",type:"datetime"},
     {field:"activityid",prompt:"ActivityID",type:""},
     {field:"descent",prompt:"Descent",type:"feet"},
-  */
-  activities.fields = [
     {field:"userid",prompt:"UserID",type:""},
     {field:"firstname", prompt:"First Name", type:""},
     {field:"lastname", prompt:"Last Name", type:""},
-    {field:"activitytype",prompt:"Activity",type:"activity"},
-    {field:"starttime",prompt:"Start",type:"datetime"},
     {field:"distance",prompt:"Distance",type:"distance"},
-    {field:"time",prompt:"Time",type:"time"},
     {field:"pace",prompt:"Pace",type:"pace"},
     {field:"speed",prompt:"Speed",type:"speed"},
+    {field:"activitytype",prompt:"Activity",type:"activity"},
+    {field:"starttime",prompt:"Start",type:"datetime"},
+  */
+  activities.fields = [
+    {field:"name",prompt:"Name",type:"name"},
+    {field:"stats",prompt:"Stats", type:"stats"},
+    {field:"time",prompt:"Time",type:"time"},
     {field:"ascent",prompt:"Elevation",type:"feet"},
     {field:"description",prompt:"Notes",type:"wrap"},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
