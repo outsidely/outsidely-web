@@ -85,24 +85,29 @@ function metersToKilometers(meters, noLabel) {
   return rtn;
 }
 
-// not right!
-function computeSpeed(meters, seconds) {
+function computeSpeed(meters, seconds, units) {
   var rtn = "";
   var distance = 0;
+  var hours = 0;
+  var unt = units || "mph";
   if (meters && seconds) {
-    distance = metersToMiles(meters,true);
-    rtn = distance / (seconds * 60 * 60);
+    hours = seconds / 3600;
+    if(unt==="mph") {
+      distance = metersToMiles(meters,true);
+    } else {
+      distance = metersToKilometers(meters, true)
+    }
+    rtn = Math.round(((distance * hours) * 100))/100;
   }
-  return rtn.toString()+" mph";
+  return rtn.toString()+" "+unt;
 }
 
-function computePace(time, length, unit) { 
+function computePace(time, length, units) { 
   var rtn = "";
-  var unt = "";
+  var unt = units || "mi"
   var distance = 0;
 
   if(time && length) {
-    unt = unit || "mi";
     var totalSeconds = time;
 
     if(unt==="mi") {
@@ -116,7 +121,7 @@ function computePace(time, length, unit) {
     const seconds = Math.round(secondsPerDistance % 60);
   
     const formattedSeconds = seconds < 10 ? "0" + seconds : seconds;
-    rtn = minutes + ":" + formattedSeconds + "/mi"; 
+    rtn = minutes + ":" + formattedSeconds + "/" + unt; 
   }
   return rtn
 }
