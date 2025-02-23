@@ -70,8 +70,14 @@ div.activity {
 .button {
   font-size:x-large;
 }
+
 img {
  width:80%
+}
+
+img.map {
+  width: 50%;
+  border:1px solid black;
 }
 
 div.dump {
