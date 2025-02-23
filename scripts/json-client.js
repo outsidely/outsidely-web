@@ -139,7 +139,7 @@ function json() {
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatStats(item["distance"], item["time"])+"&nbsp;"});            
               break;
             case "name":
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatName(item["firstname"], item["lastname"], item["userid"])+"&nbsp;["+selectActivity(item["activitytype"],g.activityList)+"]&nbsp;"+formatDate(item["starttime"])+"&nbsp;"});            
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatName(item["firstname"], item["lastname"], item["userid"])+"&nbsp;["+selectActivity(item["activitytype"],g.activityList)+"]&nbsp;"});            
               break;
             case "time":
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatTime(item[f.field])+"&nbsp;"});            
