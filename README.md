@@ -1,16 +1,27 @@
 # outsidely-web
 
-simple HTML-based client for the outsidely API
+A simple HTML-based client for the outsidely API
 
 ## Work Items
 
  * Implement validation list for activity type
    * https://outsidely-geo-app.azurewebsites.net/api/validations/activitytype
- * Improve acitivity list display (too many fields, merge, remove, etc.)
+   * [x] for feed list
+   * [ ] for detail
+   * [ ] for upload
+ * [ ] implement detail view 
+   * need api call(s)
+ * [ ] implement profile
+   * need api call(s)
+ * [ ] implement gear support
+   * need api call(s)
+ * [ ] Improve acitivity list display (too many fields, merge, remove, etc.)
    * https://outsidely-geo-app.azurewebsites.net/api/activities 
-   * firstname, lastname (userid)
-   * distance time (pace)
-   * add support for title (from server?)
-   * prep for server handling computaitons (mi/km, pace, etc.)
-   * notes/description in wrapping textarea(?)
- * Produce ALPS document for the outsidely domain (low priority)
+   * [x] firstname, lastname (userid)
+   * [x] distance time (pace,speed)
+   * [x] make dates "in english" (prep for locale)
+   * [ ] replace activity type w/ icon
+   * [ ] add support for title (from server?)
+   * [ ] prep for server handling computations (mi/km, pace, etc.)
+   * [ ] notes/description in wrapping textarea(?)
+ * [ ] Produce ALPS document for the outsidely domain (low priority)
