@@ -13,8 +13,6 @@
     {field:"firstname", prompt:"First Name", type:""},
     {field:"lastname", prompt:"Last Name", type:""},
     {field:"distance",prompt:"Distance",type:"distance"},
-    {field:"pace",prompt:"Pace",type:"pace"},
-    {field:"speed",prompt:"Speed",type:"speed"},
     {field:"activitytype",prompt:"Activity",type:"activity"},
     {field:"starttime",prompt:"Start",type:"datetime"},
   */

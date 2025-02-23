@@ -14,7 +14,7 @@ body {
 /* Media query for viewport  width less than 600px */
   @media (max-width: 600px) { 
   body {
-    font-size: x-large;
+    font-size: large;
     font-family: "sans-serif";
   }
   /*
