@@ -150,12 +150,15 @@ function json() {
             case "image":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<a href="details.html" ><img src="' + g.rootURL + item[f.field]+'" class="map"></a>'});
               break;  
-              case "activity":         
+            case "activity":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field],g.activityList)+"&nbsp;"});
               break;  
-              case "pace":         
+            case "pace":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computePace(item["time"], item["distance"])+"&nbsp;"});
-              break;  
+              break;
+              case "speed":         
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computeSpeed(item["time"], item["distance"])+"&nbsp;"});
+              break;
             case "wrap":  
               tr_data = d.data_row({className:"item wrap "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;

@@ -85,6 +85,17 @@ function metersToKilometers(meters, noLabel) {
   return rtn;
 }
 
+// not right!
+function computeSpeed(meters, seconds) {
+  var rtn = "";
+  var distance = 0;
+  if (meters && seconds) {
+    distance = metersToMiles(meters,true);
+    rtn = distance / (seconds * 60 * 60);
+  }
+  return rtn.toString()+" mph";
+}
+
 function computePace(time, length, unit) { 
   var rtn = "";
   var unt = "";
