@@ -183,6 +183,12 @@ function setTextArea(value) {
   rtn = value;
 }
 
+function formatActivityType(value) {
+  var rtn = "";
+  var rtn = '<img src="images/'+value+'.png" class="activity" />'
+  return rtn;
+}
+
 function selectActivity(value, actTypes) {
   var rtn = value;
   /*

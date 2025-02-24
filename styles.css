@@ -40,6 +40,11 @@ body {
   max-width: 100px;
 }
 
+img.activity {
+  display: inline;
+  width: 2em;
+  padding-left: .5em;
+}
 ul {
   list-style-type: none;
 }

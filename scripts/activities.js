@@ -17,12 +17,12 @@
     {field:"starttime",prompt:"Start",type:"datetime"},
   */
   activities.fields = [
-    {field:"name",prompt:"Name",type:"name"},
-    {field:"starttime",prompt:"Date",type:"datewords"},
-    {field:"stats",prompt:"Stats", type:"stats"},
-    {field:"time",prompt:"Time",type:"time"},
-    {field:"ascent",prompt:"Elevation",type:"feet"},
-    {field:"description",prompt:"Notes",type:"wrap"},
+    {field:"name",prompt:"&nbsp;",type:"name"},
+    {field:"starttime",prompt:"&nbsp;",type:"datewords"},
+    {field:"stats",prompt:"&nbsp;", type:"stats"},
+    {field:"time",prompt:"&nbsp;",type:"time"},
+    {field:"ascent",prompt:"&nbsp;",type:"feet"},
+    {field:"description",prompt:"&nbsp;",type:"wrap"},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
  
