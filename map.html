@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+     <style>
+      #map {
+        width: 800px;
+        height: 600px;
+        margin: 10px;
+        border: 1px solid black;
+      }
+     </style>
+     <script>
+      var map;
+      var layer;
+      function init()
+      {
+        map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        $.getJSON("https://outsidely-geo-app.azurewebsites.net/api/data?datatype=geojson&activityid=49d809a6-02da-4c38-8052-6ed96bddab54",
+          function(response)
+          {
+            addGeoJson(response)
+          }
+        )
+      }
+      function addGeoJson(geojson)
+      {
+        layer = L.geoJSON(geojson).addTo(map);
+        map.fitBounds(layer.getBounds())
+      }
+     </script>
+  </head>
+  <body onload="init()">
+    <div id="map"></div>
+  </body>
+</html>    
+    
