@@ -1,64 +1,42 @@
 <html>
   <head>
-    <title>Outsidely</title>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="shortcut icon" sizes="196x196" href="images/outsidely.png">
-    <link href="styles.css" rel="stylesheet" />
-    <script src="scripts/sentences.js"></script>
-    <script>
-      window.onload = function() {
-        var elm = document.getElementById("tag");
-        if(elm) {
-          elm.innerText=getRandomSentence();
-        }
-      };
-    </script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+     <style>
+      #map {
+        width: 800px;
+        height: 600px;
+        margin: 10px;
+        border: 1px solid black;
+      }
+     </style>
+     <script>
+      var map;
+      var layer;
+      function init()
+      {
+        map = L.map('map').setView([51.505, -0.09], 13);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        $.getJSON("https://outsidely-geo-app.azurewebsites.net/api/data?datatype=geojson&activityid=49d809a6-02da-4c38-8052-6ed96bddab54",
+          function(response)
+          {
+            addGeoJson(response)
+          }
+        )
+      }
+      function addGeoJson(geojson)
+      {
+        layer = L.geoJSON(geojson).addTo(map);
+        map.fitBounds(layer.getBounds())
+      }
+     </script>
   </head>
-  <body>
-    <header>
-      <table>
-        <tr>
-          <td>
-            <img src="images/logo.png" alt="Logo" class="logo">
-          </td>
-          <td>
-            <h1>Outsidely</h1>
-          </td>
-        </tr>
-      </table>
-      <span id="tag">Acting outsidely every day</span>
-    </header>    
-    <div id="commands">
-      <ul class="menu">
-        <li><input type="button" value="SignIn" class="button"/></li>
-        <li><a href="index.html"><input type="button" value="Feed" class="button"/></a></li>
-        <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
-        <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
-      </ul>
-    </div>
-    <div id="activityDetails">
-      <h2>Activity Details</h2>
-      <div id="feedList">
-        <div class="activity">
-          <ul>
-            <li><label class="title"><span name="title">Biking Today</label></li>
-            <li><label><span name="user">Mike Amundsen</span></label></li>
-            <li><label>Started:</label><span name="timeStamp">XX:XX:XX</span></li>
-            <li><label>Distance:</label><span name="distance">XXX meters</span></li>
-            <li><label>Elevation:</label><span name="elevation">XX meters</span></li>
-            <li><label>Time:</label><span name="timeElapsed">XX:XX</span></li>
-          </ul>
-          <span name="image"><img src="route.png" width="60%"/></span>
-          <span name"actions">
-            <ul class="menu">
-              <li><input type="button" value="Share/Hide" /></li>
-              <li><input type="button" value="Edit" /></li>
-              <li><input type="button" value="Delete" /></li>
-            </ul>
-          </span>
-        </div>
-      </div>
-    </div>
+  <body onload="init()">
+    <div id="map"></div>
   </body>
 </html>    
     
