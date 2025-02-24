@@ -11,7 +11,7 @@ A simple HTML-based client for the outsidely API
    * [ ] for upload
  * [ ] implement detail view 
    * https://outsidely-geo-app.azurewebsites.net/api/activities?activityid=c3b0f0ad-44f3-4ca6-8331-57e417fa2449&userid=mamund 
-   * NOGTE: you MUST include both `activityid` and `userid` to get a single record
+   * NOTE: you MUST include both `activityid` and `userid` to get a single record
  * [ ] implement profile
    * need api call(s)
  * [ ] implement gear support
