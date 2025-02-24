@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <title>Outsidely</title>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="shortcut icon" sizes="196x196" href="images/outsidely.png">
+    <link href="styles.css" rel="stylesheet" />
+    <script src="scripts/sentences.js"></script>
+    <script>
+      window.onload = function() {
+        var elm = document.getElementById("tag");
+        if(elm) {
+          elm.innerText=getRandomSentence();
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <header>
+      <table>
+        <tr>
+          <td>
+            <img src="images/logo.png" alt="Logo" class="logo">
+          </td>
+          <td>
+            <h1>Outsidely</h1>
+          </td>
+        </tr>
+      </table>
+      <span id="tag">Acting outsidely every day</span>
+    </header>    
+    <div id="commands">
+      <ul class="menu">
+        <li><input type="button" value="SignIn" class="button"/></li>
+        <li><a href="index.html"><input type="button" value="Feed" class="button"/></a></li>
+        <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
+        <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
+      </ul>
+    </div>
+    <div id="activityDetails">
+      <h2>Activity Details</h2>
+      <div id="feedList">
+        <div class="activity">
+          <ul>
+            <li><label class="title"><span name="title">Biking Today</label></li>
+            <li><label><span name="user">Mike Amundsen</span></label></li>
+            <li><label>Started:</label><span name="timeStamp">XX:XX:XX</span></li>
+            <li><label>Distance:</label><span name="distance">XXX meters</span></li>
+            <li><label>Elevation:</label><span name="elevation">XX meters</span></li>
+            <li><label>Time:</label><span name="timeElapsed">XX:XX</span></li>
+          </ul>
+          <span name="image"><img src="route.png" width="60%"/></span>
+          <span name"actions">
+            <ul class="menu">
+              <li><input type="button" value="Share/Hide" /></li>
+              <li><input type="button" value="Edit" /></li>
+              <li><input type="button" value="Delete" /></li>
+            </ul>
+          </span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>    
+    
