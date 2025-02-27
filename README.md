@@ -21,8 +21,13 @@ A simple HTML-based client for the outsidely API
    * [x] firstname, lastname (userid)
    * [x] distance time (pace,speed)
    * [x] make dates "in english" (prep for locale)
-   * [ ] replace activity type w/ icon
-   * [ ] add support for title (from server?)
+   * [x] replace activity type w/ icon
+   * [x] add support for title (from server?)
    * [ ] prep for server handling computations (mi/km, pace, etc.)
    * [ ] notes/description in wrapping textarea(?)
  * [ ] Produce ALPS document for the outsidely domain (low priority)
+ * Implement Security (Basic Auth) for
+   * [x] index (prompts => cookie and auth-header)
+   * [ ] detail
+   * [x] upload (cookie => upload fields)
+   * [ ] profile / gear
