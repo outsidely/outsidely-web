@@ -198,7 +198,7 @@ function json() {
               tr_data = d.data_row({className:"item wrap "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;
             case "title":
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])+"&nbsp;"});            
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])});            
               break;
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
