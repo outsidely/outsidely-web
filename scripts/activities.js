@@ -17,8 +17,9 @@
     {field:"starttime",prompt:"Start",type:"datetime"},
   */
   activities.fields = [
-    {field:"name",prompt:"&nbsp;",type:"name"},
+    {field:"user",prompt:"&nbsp;",type:"user"},
     {field:"starttime",prompt:"&nbsp;",type:"datewords"},
+    {field:"name",prompt:"&nbsp;",type:"title"},
     {field:"stats",prompt:"&nbsp;", type:"stats"},
     {field:"time",prompt:"&nbsp;",type:"time"},
     {field:"ascent",prompt:"&nbsp;",type:"feet"},

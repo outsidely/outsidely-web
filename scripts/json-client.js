@@ -162,7 +162,7 @@ function json() {
             case "stats":
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatStats(item["distance"], item["time"])+"&nbsp;"});            
               break;
-            case "name":
+            case "user":
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), 
                 value:formatName(item["firstname"], item["lastname"], item["userid"])+"&nbsp;" +
                 formatActivityType(item["activitytype"])+"&nbsp;"});            
@@ -197,8 +197,11 @@ function json() {
             case "wrap":  
               tr_data = d.data_row({className:"item wrap "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
               break;
+            case "title":
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])+"&nbsp;"});            
+              break;
             default:
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
               break;
           }
           d.push(tr_data,table);

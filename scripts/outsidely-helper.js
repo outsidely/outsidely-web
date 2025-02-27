@@ -189,6 +189,12 @@ function formatActivityType(value) {
   return rtn;
 }
 
+function setTitle(value) {
+  var rtn = "";
+  var rtn = '<b class="activityTitle">'+(value || "")+'<b/>'
+  return rtn;
+}
+
 function selectActivity(value, actTypes) {
   var rtn = value;
   /*
