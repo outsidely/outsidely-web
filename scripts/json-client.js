@@ -19,6 +19,8 @@ function json() {
   var d = domHelp();  
   var g = {};
   
+  g.userid = "";
+  g.authString = "";
   g.url = '';
   g.msg = null;
   g.title = "JSON Client";
@@ -27,18 +29,17 @@ function json() {
   g.object = "";
   g.rootURL = "";
   
-  // control objects
-  g.fields = {};
-  g.labels = {};
+  // control 
   g.actions = {};
   g.content = {};
   g.activityList = [];
+  g.activityTypeURL = "https://outsidely-geo-app.azurewebsites.net/api/validations?validationtype=activitytype";
 
   /********************************
     HOME CONTROLS
   ********************************/
   // home controls
-  g.fields.home = [];
+  //g.fields.home = [];
   
   // home object content
   g.content.home = "";
@@ -60,6 +61,7 @@ function json() {
   // init library and start
   //args.url, args.title, args.rootURL)
   function init(args) {
+
     if(!args.url || args.url==='') {
       alert('*** ERROR:\n\nMUST pass starting URL to the library');
     }
@@ -67,6 +69,9 @@ function json() {
       g.title = args.title||"JSON Client";
       g.url = args.url;
       g.rootURL = args.rootURL || "";
+
+      getAuth();
+
       req(g.url,"get");
     }
   }
@@ -85,6 +90,25 @@ function json() {
     g.object="activities";
   }
   
+  function getAuth() {
+    var userid, password, auth;
+
+    auth = getCookie("key");
+    if(auth == "" ) {      
+      userid = prompt("UserID:");
+      if(userid) {
+        password = prompt("Password:");
+      }
+      if(userid && password) {
+        g.userid = userid;
+        g.authString = window.btoa(userid+":"+password);
+        setCookie("key",g.authString);
+      }  
+    } else {
+      g.authString = auth;
+    }
+  }
+
   // handle response dump
   function dump() {
     var elm = d.find("dump");
@@ -92,7 +116,7 @@ function json() {
   }
 
   function loadData() {
-    var url = "https://outsidely-geo-app.azurewebsites.net/api/validations/activitytype";
+    var url = g.activityTypeURL;
     req(url, "get", null, loadDataRsp);
   }
   function loadDataRsp(ajax) {
@@ -424,6 +448,7 @@ function json() {
     }
     ajax.open(method, url);
     ajax.setRequestHeader("accept",g.atype);
+    ajax.setRequestHeader("Authorization","Basic "+g.authString);
     if(body && body!==null) {
       ajax.setRequestHeader("content-type", g.ctype);
     }

@@ -205,3 +205,40 @@ function selectActivity(value, actTypes) {
   }
   return rtn;
 }
+
+// cookie support
+function setCookie(name,value,days) {
+  var rtn = false;
+  var dy = days || 30;
+  var dt = new Date();
+  var expires = "";
+  if(name && value) {
+    dt.setTime(dt.getTime() + (dy*24*60*60*1000));
+    expires = "expires="+dt.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+    rtn = true;
+  }
+  return rtn;
+}
+
+function getCookie(name) {
+  var rtn = "";
+  var dCookie = "";
+  var ca = [];
+  var c = "";
+  if(name) {
+    name = name+"=";
+    dCookie = decodeURIComponent(document.cookie);
+    ca = dCookie.split(";");
+    for(var i=0; i<ca.length; i++) {
+      c = ca[i];
+      while (c.charAt(0)==' ') {
+        c = c.substring(1);
+      }
+      if(c.indexOf(name)==0) {
+        return c.substring(name.length, c.length);
+      }  
+    }
+  }
+  return rtn;
+}

@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" sizes="196x196" href="images/outsidely.png">
     <link href="styles.css" rel="stylesheet" />
+    <script src="scripts/outsidely-helper.js"></script>
     <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
@@ -11,6 +12,18 @@
         if(elm) {
           elm.innerText=getRandomSentence();
         }
+
+        var auth = getCookie("key");
+        var key = window.atob(auth);
+        var idx = key.indexOf(":");
+        var userid = key.substring(0,idx);
+        var password = key.substring(idx);
+
+        var userInput = document.getElementsByName("userid")[0];
+        userInput.value = userid;
+
+        var passInput = document.getElementsByName("password")[0];
+        passInput.value = password;
       };
     </script>
   </head>
@@ -42,8 +55,8 @@
         action="https://outsidely-geo-app.azurewebsites.net/api/upload" 
         enctype="multipart/form-data">
         <ul>
-          <li><label>UserID:</label><input name="userid" /></li>
-          <li><label>Key:</label><input name="secret" /></li>
+          <input name="userid" type="hidden"/>
+          <input name="password" type="hidden"/>
           <li><label>Title:</label><input name="title" /></li>
           <li>
             <label>Activity:</label>
