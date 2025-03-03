@@ -33,7 +33,7 @@ function json() {
   g.actions = {};
   g.content = {};
   g.activityList = [];
-  g.activityTypeURL = "https://outsidely-geo-app.azurewebsites.net/api/validations?validationtype=activitytype";
+  g.activityTypeURL = "https://outsidely-geo-app.azurewebsites.net/api/validate/activitytype";
 
   /********************************
     HOME CONTROLS

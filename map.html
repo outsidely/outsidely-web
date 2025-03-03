@@ -21,7 +21,7 @@
             maxZoom: 19,
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         }).addTo(map);
-        $.getJSON("https://outsidely-geo-app.azurewebsites.net/api/data?datatype=geojson&activityid=b8146597-ad29-4192-91eb-f4dc9e23dfaf",
+        $.getJSON("https://outsidely-geo-app.azurewebsites.net/api/data/geojson/b8146597-ad29-4192-91eb-f4dc9e23dfaf",
           function(response)
           {
             addGeoJson(response)
