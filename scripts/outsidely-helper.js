@@ -248,3 +248,16 @@ function getCookie(name) {
   }
   return rtn;
 }
+
+function deleteCookie(name) {
+  var rtn = false;
+  var dt = new Date();
+  var expires = "";
+  if(name) {
+    dt.setTime(new Date(Date.now()) - 86400000); // set to yesterday
+    expires = "expires="+dt.toUTCString();
+    document.cookie = name + "=;" + expires + ";path=/";
+    rtn = true;
+  }
+  return rtn;
+}
