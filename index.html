@@ -12,23 +12,47 @@
     <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
-        var pg = json();
+        var elm = document.getElementById("tag");
+        if(elm) {
+          elm.innerText=getRandomSentence();
+        }
+
+        var elm = document.getElementById("login");
+        if(elm) {
+          elm.onclick = function() {
+            var location = window.location.href;
+            var anchor = document.createElement('a');
+            anchor.href = "https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=" + 
+              encodeURIComponent(location);
+            anchor.target = "tbox";
+            anchor.click();
+            return false;
+          }
+        }
+
+        var elm = document.getElementById("logout");
+        if(elm) {
+          elm.onclick = function(){
+            deleteCookie("key");
+            elm.style.display="none";
+            alert("logged out");
+            window.location.reload();
+          }
+          if(getCookie("key")!=="") {
+            elm.style.display = "inline";
+          } else {
+            elm.style.display = "none";
+          }
+        }
+      };
+
+      var pg = json();
         var args = {};
         args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities";
         args.title = "";
         args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
         pg.init(args);
 
-        var elm = document.getElementById("tag");
-        if(elm) {
-          elm.innerText=getRandomSentence();
-        }
-
-        var elm = document.getElementById("logout");
-        if(elm) {
-          elm.onclick = function(){deleteCookie("key");alert("logged out")}
-        }
-      };
     </script>
   </head>
   <body>
@@ -44,14 +68,14 @@
         </tr>
       </table>
       <span id="tag">Acting outsidely every day</span>
-      <a href="https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=https%3A%2F%2Foutsidely.github.io">Login</a>
+      <a id="login" href="https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=https%3A%2F%2Foutsidely.github.io" target="dump">Login</a>
     </header>    
     <div id="commands">
       <ul class="menu">
-        <li><input id="logout" type="button" value="SignIn" class="button" /></li>
         <li><a href="index.html"><input type="button" value="Feed" class="button" /></a></li>
         <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
         <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
+        <li><input id="logout" type="button" value="Log Out" class="button" style="display:none;"/></li>
       </ul>
     </div>
     <div id="activityFeed">
@@ -64,6 +88,7 @@
       <textarea id="dump" cols="50" rows="10">
 
       </textarea>
+      <iframe name="tbox"></iframe>
     </div>
   </body>
 </html>    
