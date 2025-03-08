@@ -35,25 +35,6 @@ function json() {
   g.activityList = [];
   g.activityTypeURL = "https://outsidely-geo-app.azurewebsites.net/api/validate/activitytype";
 
-  /********************************
-    HOME CONTROLS
-  ********************************/
-  // home controls
-  //g.fields.home = [];
-  
-  // home object content
-  g.content.home = "";
-  g.content.home =  '<div class="ui segment">';
-  g.content.home += '  <h3>Welcome to TPS at BigCo!</h3>';
-  g.content.home += '  <p><b>Select one of the actions above</b></p>';
-  g.content.home += '</div>';
-
-  // home actions
-  g.actions.home = {
-    home:       {target:"app", func:httpGet, href:"/home/", prompt:"Home"}, 
-    tasks:      {target:"app", func:httpGet, href:"/task/", prompt:"Tasks"}, 
-    users:      {target:"app", func:httpGet, href:"/user/", prompt:"Users"}  
-  };
 
   /********************************
     MAIN CODE
@@ -90,6 +71,7 @@ function json() {
     g.object="activities";
   }
   
+  
   function getAuth() {
     var userid, password, auth;
 
@@ -108,6 +90,7 @@ function json() {
       g.authString = auth;
     }
   }
+
 
   // handle response dump
   function dump() {

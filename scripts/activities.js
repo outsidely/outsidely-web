@@ -6,6 +6,7 @@
   
 
   /*
+  sampe data
   {      
     "timestamp": "March 06 at 05:47 PM",      
     "activitytype": "Ride",      

@@ -4,6 +4,10 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="shortcut icon" sizes="196x196" href="images/outsidely.png">
     <link href="styles.css" rel="stylesheet" />
+    <script src="scripts/dom-help.js"></script>
+    <script src="scripts/json-client.js"></script>
+    <script src="scripts/activities.js"></script>
+    <script src="scripts/outsidely-helper.js"></script>
     <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
@@ -11,6 +15,29 @@
         if(elm) {
           elm.innerText=getRandomSentence();
         }
+
+        var elm = document.getElementById("logout");
+        if(elm) {
+          elm.onclick = function(){
+            deleteCookie("key");
+            elm.style.display="none";
+            alert("logged out");
+            window.location.reload();
+          }
+          if(getCookie("key")!=="") {
+            elm.style.display = "inline";
+          } else {
+            elm.style.display = "none";
+          }
+        }
+
+        var pg = json();
+        var args = {};
+        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities";
+        args.title = "";
+        args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
+        pg.init(args);
+
       };
     </script>
   </head>
@@ -21,19 +48,20 @@
           <td>
             <img src="images/logo.png" alt="Logo" class="logo">
           </td>
-          <td>
+          <td style="vertical-align:text-top;">
             <h1>Outsidely</h1>
           </td>
         </tr>
       </table>
       <span id="tag">Acting outsidely every day</span>
+      <a id="login" href="https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=https%3A%2F%2Foutsidely.github.io" target="dump">Login</a>
     </header>    
     <div id="commands">
       <ul class="menu">
-        <li><input type="button" value="SignIn" class="button"/></li>
-        <li><a href="index.html"><input type="button" value="Feed" class="button"/></a></li>
+        <li><a href="index.html"><input type="button" value="Feed" class="button" /></a></li>
         <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
         <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
+        <li><input id="logout" type="button" value="LogOut" class="button" style="display:none;"/></li>
       </ul>
     </div>
     <div id="activityDetails">
