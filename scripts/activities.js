@@ -46,7 +46,7 @@
     {field:"distance",prompt:"&nbsp;",type:"distance"},
     {field:"ascent",prompt:"&nbsp;",type:"ascent"},
     {field:"description",prompt:"&nbsp;",type:"wrap"},
-    {field:"previewurl",prompt:"&nbsp;",type:"image"}
+    {field:"previewurl",prompt:"&nbsp;",type:"detailImage"}
   ];
  
   // user object content

@@ -166,7 +166,7 @@ function json() {
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDateWords(item[f.field])+"&nbsp;"});
               break;  
             case "detailImage":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field])});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"])});
               break;  
             case "image":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<a href="details.html" ><img src="' + g.rootURL + item[f.field]+'" class="map"></a>'});

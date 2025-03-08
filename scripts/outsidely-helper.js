@@ -206,11 +206,11 @@ function selectActivity(value, actTypes) {
   return rtn;
 }
 
-function detailImageLink(item, rootURL) {
+function detailImageLink(item, rootURL,userid,activityid) {
   var rtn = "";
   var url = rootURL;
-  if(item && url) {
-    rt = '<a href="details.html" ><img src="' + url + item.value+'" class="map"></a>';
+  if(item && url && userid && activityid) {
+    rtn = '<a href="details.html?userid='+userid+'&activityid='+activityid+'"><img src="' + url + item+'" class="map"></a>';
   }
   return rtn;
 }
