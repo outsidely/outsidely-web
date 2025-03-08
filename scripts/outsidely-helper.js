@@ -206,6 +206,15 @@ function selectActivity(value, actTypes) {
   return rtn;
 }
 
+function detailImageLink(item, rootURL) {
+  var rtn = "";
+  var url = rootURL;
+  if(item && url) {
+    rt = '<a href="details.html" ><img src="' + url + item.value+'" class="map"></a>';
+  }
+  return rtn;
+}
+
 // cookie support
 function setCookie(name,value,days) {
   var rtn = false;

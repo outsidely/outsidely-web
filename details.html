@@ -5,7 +5,7 @@
     <link rel="shortcut icon" sizes="196x196" href="images/outsidely.png">
     <link href="styles.css" rel="stylesheet" />
     <script src="scripts/dom-help.js"></script>
-    <script src="scripts/json-client.js"></script>
+    <script src="scripts/json-details.js"></script>
     <script src="scripts/activities.js"></script>
     <script src="scripts/outsidely-helper.js"></script>
     <script src="scripts/sentences.js"></script>
@@ -33,7 +33,7 @@
 
         var pg = json();
         var args = {};
-        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities";
+        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities/jamund/bf5fe35a-a70c-4b2b-a112-64fb2d727b34";
         args.title = "";
         args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
         pg.init(args);
@@ -66,26 +66,21 @@
     </div>
     <div id="activityDetails">
       <h2>Activity Details</h2>
-      <div id="feedList">
-        <div class="activity">
-          <ul>
-            <li><label class="title"><span name="title">Biking Today</label></li>
-            <li><label><span name="user">Mike Amundsen</span></label></li>
-            <li><label>Started:</label><span name="timeStamp">XX:XX:XX</span></li>
-            <li><label>Distance:</label><span name="distance">XXX meters</span></li>
-            <li><label>Elevation:</label><span name="elevation">XX meters</span></li>
-            <li><label>Time:</label><span name="timeElapsed">XX:XX</span></li>
-          </ul>
-          <span name="image"><img src="route.png" width="60%"/></span>
-          <span name="actions">
-            <ul class="menu">
-              <li><input type="button" value="Share/Hide" /></li>
-              <li><input type="button" value="Edit" /></li>
-              <li><input type="button" value="Delete" /></li>
-            </ul>
-          </span>
-        </div>
+      <div id="items">
       </div>
+      <span name="actions">
+        <ul class="menu">
+          <li><input type="button" value="Share/Hide" /></li>
+          <li><input type="button" value="Edit" /></li>
+          <li><input type="button" value="Delete" /></li>
+        </ul>
+      </span>
+    </div>
+    <div>
+      <textarea id="dump" cols="50" rows="10">
+
+      </textarea>
+      <iframe name="tbox"></iframe>
     </div>
   </body>
 </html>    
