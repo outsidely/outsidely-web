@@ -174,7 +174,7 @@ function json() {
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToFeet(item[f.field])+"&nbsp;"});            
               break;
             case "distance":
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToMiles(item[f.field])+"&nbsp;"});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:(item[f.field]+" distance" || "" )+"&nbsp;"});
               break;    
             case "datetime":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
@@ -200,7 +200,10 @@ function json() {
             case "title":
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])});            
               break;
-            default:
+            case "ascent":
+              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field]+" elevation" || "")+"&nbsp;"});            
+              break;
+              default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
               break;
           }

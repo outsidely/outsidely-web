@@ -4,25 +4,46 @@
 
   var activities = {}
   
+
+  /*
+  {      
+    "timestamp": "March 06 at 05:47 PM",      
+    "activitytype": "Ride",      
+    "ascent": "561 ft",      
+    "comments": 0,      
+    "descent": "568 ft",      
+    "description": "Windy but crisp ",      
+    "distance": "2.27 mi",      
+    "media": [],      
+    "name": "Quick run",      
+    "props": 0,      
+    "starttime": "March 06 at 12:08 PM",      
+    "time": "20m 32s",      
+    "userid": "jamund",      
+    "activityid": "bf5fe35a-a70c-4b2b-a112-64fb2d727b34",      
+    "previewurl": "data/preview/bf5fe35a-a70c-4b2b-a112-64fb2d727b34",      
+    "firstname": "Jesse",      
+    "lastname": "Amundsen",      
+    "speed": "6.6 mi/hr"    
+  }
+  */
   // activities fields
   /*
-    {field:"timestamp",prompt:"Time Stamp",type:"datetime"},
     {field:"activityid",prompt:"ActivityID",type:""},
+    {field:"timestamp",prompt:"&nbsp;",type:""},
     {field:"descent",prompt:"Descent",type:"feet"},
     {field:"userid",prompt:"UserID",type:""},
     {field:"firstname", prompt:"First Name", type:""},
     {field:"lastname", prompt:"Last Name", type:""},
-    {field:"distance",prompt:"Distance",type:"distance"},
     {field:"activitytype",prompt:"Activity",type:"activity"},
     {field:"starttime",prompt:"Start",type:"datetime"},
   */
   activities.fields = [
     {field:"user",prompt:"&nbsp;",type:"user"},
-    {field:"starttime",prompt:"&nbsp;",type:"datewords"},
+    {field:"starttime",prompt:"&nbsp;",type:""},
     {field:"name",prompt:"&nbsp;",type:"title"},
-    {field:"stats",prompt:"&nbsp;", type:"stats"},
-    {field:"time",prompt:"&nbsp;",type:"time"},
-    {field:"ascent",prompt:"&nbsp;",type:"feet"},
+    {field:"distance",prompt:"&nbsp;",type:"distance"},
+    {field:"ascent",prompt:"&nbsp;",type:"ascent"},
     {field:"description",prompt:"&nbsp;",type:"wrap"},
     {field:"previewurl",prompt:"&nbsp;",type:"image"}
   ];
