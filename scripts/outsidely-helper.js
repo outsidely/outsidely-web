@@ -264,3 +264,14 @@ function deleteCookie(name) {
   }
   return rtn;
 }
+
+function getQueryValue(query,val) {
+  var params, val;
+  var rtn = "";
+  if(query && val) {
+    params = new URLSearchParams(query);
+    rtn = params.get(val) || "";  
+  }
+
+  return rtn;
+}

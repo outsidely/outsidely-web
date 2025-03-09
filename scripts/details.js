@@ -31,26 +31,34 @@
   }
   */
   // activities fields
-  details.fields = [
+  /*
     {field:"timestamp",prompt:"&nbsp;",type:""},
-    {field:"activitytype",prompt:"&nbsp;",type:""},
     {field:"ascent",prompt:"&nbsp;",type:""},
-    {field:"comments",prompt:"&nbsp;",type:""},
     {field:"descent",prompt:"&nbsp;",type:""},
-    {field:"description",prompt:"&nbsp;",type:"wrap"},
     {field:"distance",prompt:"&nbsp;",type:""},
-    {field:"media",prompt:"&nbsp;",type:""},
-    {field:"name",prompt:"&nbsp;",type:""},
-    {field:"props",prompt:"&nbsp;",type:""},
+    {field:"description",prompt:"&nbsp;",type:"wrap"},
     {field:"starttime",prompt:"&nbsp;",type:""},
-    {field:"time",prompt:"&nbsp;",type:""},
     {field:"userid",prompt:"&nbsp;",type:""},
     {field:"activityid",prompt:"&nbsp;",type:""},
     {field:"firstname",prompt:"&nbsp;",type:""},
     {field:"lastname",prompt:"&nbsp;",type:""},
-    {field:"speed",prompt:"&nbsp;",type:""},
     {field:"trackurl",prompt:"&nbsp;",type:""},
-    {field:"previewurl",prompt:"&nbsp;",type:"image"}
+    {field:"activitytype",prompt:"&nbsp;",type:""},
+    {field:"name",prompt:"&nbsp;",type:""},
+  */
+  details.fields = [
+    {field:"user",prompt:"&nbsp;",type:"user"},
+    {field:"starttime",prompt:"&nbsp;",type:""},
+    {field:"name",prompt:"&nbsp;",type:"title"},
+    {field:"distance",prompt:"&nbsp;",type:"distance"},
+    {field:"ascent",prompt:"&nbsp;",type:"ascent"},
+    {field:"description",prompt:"&nbsp;",type:"wrap"},
+    {field:"time",prompt:"&nbsp;",type:""},
+    {field:"speed",prompt:"&nbsp;",type:""},
+    {field:"previewurl",prompt:"&nbsp;",type:"image"},
+    {field:"comments",prompt:"&nbsp;",type:"comments"},
+    {field:"media",prompt:"&nbsp;",type:"media"},
+    {field:"props",prompt:"&nbsp;",type:"props"}
   ];
  
   // user object content

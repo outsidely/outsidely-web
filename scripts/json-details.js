@@ -126,7 +126,7 @@ function json() {
     d.clear(elm);
     
     msg = g.msg[g.object]; 
-    flds = activities.fields; //[g.object];
+    flds = details.fields; //[g.object];
     
     // handle returned objects
     if(msg) {
@@ -169,7 +169,7 @@ function json() {
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field])});
               break;  
             case "image":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<a href="details.html" ><img src="' + g.rootURL + item[f.field]+'" class="map"></a>'});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'" class="map">'});
               break;  
             case "activity":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field],g.activityList)+"&nbsp;"});

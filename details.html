@@ -6,11 +6,15 @@
     <link href="styles.css" rel="stylesheet" />
     <script src="scripts/dom-help.js"></script>
     <script src="scripts/json-details.js"></script>
-    <script src="scripts/activities.js"></script>
+    <script src="scripts/details.js"></script>
     <script src="scripts/outsidely-helper.js"></script>
     <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
+
+        var userid = getQueryValue(window.location.search,"userid");
+        var activityid = getQueryValue(window.location.search,"activityid");
+
         var elm = document.getElementById("tag");
         if(elm) {
           elm.innerText=getRandomSentence();
@@ -33,7 +37,7 @@
 
         var pg = json();
         var args = {};
-        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities/jamund/bf5fe35a-a70c-4b2b-a112-64fb2d727b34";
+        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities/"+userid+"/"+activityid;
         args.title = "";
         args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
         pg.init(args);
