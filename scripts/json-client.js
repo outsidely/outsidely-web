@@ -62,6 +62,7 @@ function json() {
     dump();
     setObject();
     loadData();
+    nextUrl();
     actions();
     clearForm();
   }
@@ -96,6 +97,7 @@ function json() {
   function dump() {
     var elm = d.find("dump");
     elm.innerText = JSON.stringify(g.msg, null, 2);
+    elm.style.display = "none";
   }
 
   function loadData() {
@@ -118,6 +120,23 @@ function json() {
     items();
   }
 
+  // handle next page of data
+  function nextUrl() {
+    var elm, a;
+    if (g.msg.nexturl) {
+      elm = d.find("nexturl");
+      if(elm) {
+        d.clear(elm);
+        a = d.anchor({href:g.rootURL+g.msg.nexturl,text:"Next"});
+        a.onclick = function(){
+          g.url = g.rootURL + g.msg.nexturl;
+          req(g.url,"get"); 
+          return false;
+        }
+        d.push(a,elm);
+      }
+    }
+  }
   // handle item collection
   function items() {
     var msg, flds, elm, coll;
