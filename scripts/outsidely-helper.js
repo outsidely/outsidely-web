@@ -305,12 +305,27 @@ function setLogin(elm) {
       return false;
     }
   }
-
 }
 
 function setTagLine(elm) {
   if(elm) {
     elm.innerText = getRandomSentence();
   }
+  return true;
+}
+
+function setFormIdentity(elmUser, elmPass) {
+  var auth = getCookie("key");
+  var key = window.atob(auth);
+  var idx = key.indexOf(":");
+  var userid = key.substring(0,idx);
+  var password = key.substring(idx);
+
+  var userInput = document.getElementsByName(elmUser)[0];
+  userInput.value = userid;
+
+  var passInput = document.getElementsByName(elmPass)[0];
+  passInput.value = password;
+
   return true;
 }

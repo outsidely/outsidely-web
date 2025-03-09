@@ -61,7 +61,6 @@ function json() {
   function parseMsg() {
     dump();
     setObject();
-    //loadData();
     items();
     nextUrl();
     actions();
@@ -101,6 +100,7 @@ function json() {
     elm.style.display = "none";
   }
 
+  /*
   function loadData() {
     var url = g.activityTypeURL;
     req(url, "get", null, loadDataRsp);
@@ -120,7 +120,8 @@ function json() {
     });
     items();
   }
-
+  */
+  
   // handle next page of data
   function nextUrl() {
     var elm, a;

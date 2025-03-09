@@ -8,22 +8,11 @@
     <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
-        var elm = document.getElementById("tag");
-        if(elm) {
-          elm.innerText=getRandomSentence();
-        }
 
-        var auth = getCookie("key");
-        var key = window.atob(auth);
-        var idx = key.indexOf(":");
-        var userid = key.substring(0,idx);
-        var password = key.substring(idx);
-
-        var userInput = document.getElementsByName("userid")[0];
-        userInput.value = userid;
-
-        var passInput = document.getElementsByName("password")[0];
-        passInput.value = password;
+        setTagLine(document.getElementById("tag"));
+        setLogin(document.getElementById("login"))
+        setLogout(document.getElementById("logout"));
+        setFormIdentity("userid", "password");
       };
     </script>
   </head>
@@ -43,10 +32,10 @@
     </header>    
     <div id="commands">
       <ul class="menu">
-        <li><input type="button" value="SignIn" class="button"/></li>
-        <li><a href="index.html"><input type="button" value="Feed" class="button"/></a></li>
+        <li><a href="index.html"><input type="button" value="Feed" class="button" /></a></li>
         <li><a href="upload.html"><input type="button" value="Upload" class="button" /></a></li>
         <li><a href="profile.html"><input type="button" value="Profile" class="button" /></a></li>
+        <li><input id="logout" type="button" value="LogOut" class="button" style="display:none;"/></li>
       </ul>
     </div>
     <div id="activityUpload">
