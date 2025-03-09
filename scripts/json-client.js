@@ -61,7 +61,8 @@ function json() {
   function parseMsg() {
     dump();
     setObject();
-    loadData();
+    //loadData();
+    items();
     nextUrl();
     actions();
     clearForm();

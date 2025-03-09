@@ -90,3 +90,8 @@ div.dump {
   display:none;
 }
 
+div#nexturl {
+  font-weight: bolder;
+  margin: .5em;
+}
+
