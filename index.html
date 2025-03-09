@@ -12,49 +12,21 @@
     <script src="scripts/sentences.js"></script>
     <script>
       window.onload = function() {
-        var elm = document.getElementById("tag");
-        if(elm) {
-          elm.innerText=getRandomSentence();
-        }
-        
-        /*
-        var elm = document.getElementById("login");
-        if(elm) {
-          elm.onclick = function() {
-            var location = window.location.href;
-            var anchor = document.createElement('a');
-            anchor.href = "https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=" + 
-              encodeURIComponent(location);
-            anchor.target = "tbox";
-            anchor.click();
-            return false;
-          }
-        }
-        */
-       
-        var elm = document.getElementById("logout");
-        if(elm) {
-          elm.onclick = function(){
-            deleteCookie("key");
-            elm.style.display="none";
-            alert("logged out");
-            window.location.reload();
-          }
-          if(getCookie("key")!=="") {
-            elm.style.display = "inline";
-          } else {
-            elm.style.display = "none";
-          }
-        }
-      };
 
-      var pg = json();
+        // load fix up UI
+        setTagLine( document.getElementById("tag"));
+        setLogin(document.getElementById("login"))
+        setLogout(document.getElementById("logout"));
+      
+
+        // launch server calls
+        var pg = json();
         var args = {};
         args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities";
         args.title = "";
         args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
         pg.init(args);
-
+      };
     </script>
   </head>
   <body>

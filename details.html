@@ -12,29 +12,16 @@
     <script>
       window.onload = function() {
 
+        // get query values for this page
         var userid = getQueryValue(window.location.search,"userid");
         var activityid = getQueryValue(window.location.search,"activityid");
 
-        var elm = document.getElementById("tag");
-        if(elm) {
-          elm.innerText=getRandomSentence();
-        }
+        // load fix up UI
+        setTagLine( document.getElementById("tag"));
+        setLogin(document.getElementById("login"))
+        setLogout(document.getElementById("logout"));
 
-        var elm = document.getElementById("logout");
-        if(elm) {
-          elm.onclick = function(){
-            deleteCookie("key");
-            elm.style.display="none";
-            alert("logged out");
-            window.location.reload();
-          }
-          if(getCookie("key")!=="") {
-            elm.style.display = "inline";
-          } else {
-            elm.style.display = "none";
-          }
-        }
-
+        // server calls for this page
         var pg = json();
         var args = {};
         args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities/"+userid+"/"+activityid;

@@ -275,3 +275,42 @@ function getQueryValue(query,val) {
 
   return rtn;
 }
+
+function setLogout(elm) {
+  if(elm) {
+    elm.onclick = function(){
+      deleteCookie("key");
+      elm.style.display="none";
+      alert("logged out");
+      window.location.reload();
+    }
+    if(getCookie("key")!=="") {
+      elm.style.display = "inline";
+    } else {
+      elm.style.display = "none";
+    }
+  }
+  return true;
+}
+
+function setLogin(elm) {
+  if(elm) {
+    elm.onclick = function() {
+      var location = window.location.href;
+      var anchor = document.createElement('a');
+      anchor.href = "https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=" + 
+        encodeURIComponent(location);
+      anchor.target = "tbox";
+      anchor.click();
+      return false;
+    }
+  }
+
+}
+
+function setTagLine(elm) {
+  if(elm) {
+    elm.innerText = getRandomSentence();
+  }
+  return true;
+}
