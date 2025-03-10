@@ -142,54 +142,50 @@ function json() {
         // emit the data elements
         for(var f of flds) {
           switch(f.type) {
-            case "stats":
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatStats(item["distance"], item["time"])+"&nbsp;"});            
-              break;
             case "user":
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), 
                 value:formatName(item["firstname"], item["lastname"], item["userid"])+"&nbsp;" +
                 formatActivityType(item["activitytype"])+"&nbsp;"});            
               break;
-            case "time":
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:formatTime(item[f.field])+"&nbsp;"});            
-              break;
-            case "feet":
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:metersToFeet(item[f.field])+"&nbsp;"});            
-              break;
             case "distance":
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:(item[f.field]+" distance" || "" )+"&nbsp;"});
+              if(item[f.field].length>0 && item[f.field].substring(0,4)!=="0.00"){
+                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:(item[f.field]+" distance" || "" )+"&nbsp;"});
+              }
               break;    
-            case "datetime":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDate(item[f.field])+"&nbsp;"});
-              break;  
-              case "datewords":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:formatDateWords(item[f.field])+"&nbsp;"});
-              break;  
             case "detailImage":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field])});
+              if(item[f.field] && item[f.field].length>0) {
+                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"])});
+              }
               break;  
             case "image":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'" class="map">'});
+              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'" alt="'+g.rootURL+item[f.field]+'" class="map">'});
               break;  
-            case "activity":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:selectActivity(item[f.field],g.activityList)+"&nbsp;"});
-              break;  
-            case "pace":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computePace(item["time"], item["distance"])+"&nbsp;"});
-              break;
-              case "speed":         
-              tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:computeSpeed(item["time"], item["distance"])+"&nbsp;"});
-              break;
             case "wrap":  
-              tr_data = d.data_row({className:"item wrap "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
+              if(item[f.field] && item[f.field].length>0) {
+                tr_data = d.data_row({className:"item wrap "+f.field, text:(f.prompt||f.field), value:item[f.field]+"&nbsp;"});            
+              }
               break;
             case "title":
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])});            
+              if(item[f.field].length>0) {
+                tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])});            
+              }
               break;
             case "ascent":
-              tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field]+" elevation" || "")+"&nbsp;"});            
+              if(item[f.field].length>0 && item[f.field].substring(0,2)!=="0 ") {
+                tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field]+" elevation" || "")+"&nbsp;"});            
+              }
               break;
-              default:
+            case "time":
+              if(item[f.field]!=="01h 00m 00s") {
+                tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
+              }
+              break;
+            case "speed":
+                if(item[f.field].substring(0,3)!=="0.0") {
+                  tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
+                }
+                break;
+            default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
               break;
           }
