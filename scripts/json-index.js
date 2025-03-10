@@ -165,7 +165,7 @@ function json() {
               }
               break;
             case "title":
-              if(item[f.field].length>0) {
+              if(item[f.field] && item[f.field].length>0) {
                 tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:setTitle(item["name"])});            
               }
               break;
