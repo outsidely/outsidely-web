@@ -2,6 +2,15 @@
  outsidely helper
  ***********************************/
 
+ var os = {};
+ os.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
+ os.feedURL = "https://outsidely-geo-app.azurewebsites.net/api/activities";
+ os.detailsURL = "https://outsidely-geo-app.azurewebsites.net/api/activities/";
+ os.profileURL = "";
+ os.uploadURL = "";
+ os.gearURL = "";
+ os.loginURL = "https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=https%3A%2F%2Foutsidely.github.io";
+ os.redirectURL = "https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=";
 /*  
   const totalSeconds = 7500; // Example: 7500 seconds
   const formattedTime = formatTime(totalSeconds);
@@ -298,9 +307,7 @@ function setLogin(elm) {
     elm.onclick = function() {
       var location = window.location.href;
       var anchor = document.createElement('a');
-      anchor.href = "https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=" + 
-        encodeURIComponent(location);
-      anchor.target = "tbox";
+      anchor.href = os.redirectURL + encodeURIComponent(location);
       anchor.click();
       return false;
     }

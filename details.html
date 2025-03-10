@@ -24,9 +24,9 @@
         // server calls for this page
         var pg = json();
         var args = {};
-        args.url = "https://outsidely-geo-app.azurewebsites.net/api/activities/"+userid+"/"+activityid;
+        args.url = os.detailsURL+userid+"/"+activityid;
         args.title = "";
-        args.rootURL = "https://outsidely-geo-app.azurewebsites.net/api/";
+        args.rootURL = os.rootURL;
         pg.init(args);
 
       };
@@ -45,7 +45,7 @@
         </tr>
       </table>
       <span id="tag">Acting outsidely every day</span>
-      <a id="login" href="https://outsidely-geo-app.azurewebsites.net/api/login?redirecturl=https%3A%2F%2Foutsidely.github.io" target="dump">Login</a>
+      <a id="login" href="#">Login</a>
     </header>    
     <div id="commands">
       <ul class="menu">
@@ -72,7 +72,7 @@
       <textarea id="dump" cols="50" rows="10">
 
       </textarea>
-      <iframe name="tbox"></iframe>
+      <iframe name="tbox" id="tbox"></iframe>
     </div>
   </body>
 </html>    
