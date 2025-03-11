@@ -148,7 +148,7 @@ function json() {
                 formatActivityType(item["activitytype"])+"&nbsp;"});            
               break;
             case "distance":
-              if(item[f.field].length>0 && item[f.field].substring(0,4)!=="0.00"){
+              if(item[f.field] && item[f.field].length>0 && item[f.field].substring(0,4)!=="0.00"){
                 tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:(item[f.field]+" distance" || "" )+"&nbsp;"});
               }
               break;    
@@ -171,17 +171,17 @@ function json() {
               }
               break;
             case "ascent":
-              if(item[f.field].length>0 && item[f.field].substring(0,2)!=="0 ") {
+              if(item[f.field] && item[f.field].length>0 && item[f.field].substring(0,2)!=="0 ") {
                 tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field]+" elevation" || "")+"&nbsp;"});            
               }
               break;
             case "time":
-              if(item[f.field]!=="01h 00m 00s") {
+              if(item[f.field] && item[f.field]!=="01h 00m 00s") {
                 tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
               }
               break;
             case "speed":
-                if(item[f.field].substring(0,3)!=="0.0") {
+                if(item[f.field] && item[f.field].substring(0,3)!=="0.0") {
                   tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
                 }
                 break;

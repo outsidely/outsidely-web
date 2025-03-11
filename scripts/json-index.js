@@ -147,12 +147,12 @@ function json() {
                 formatActivityType(item["activitytype"])+"&nbsp;"});            
               break;
             case "distance":
-              if(item[f.field].length>0 && item[f.field].substring(0,4)!=="0.00"){
+              if(item[f.field] && item[f.field].length>0 && item[f.field].substring(0,4)!=="0.00"){
                 tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:(item[f.field]+" distance" || "" )+"&nbsp;"});
               }
               break;    
             case "detailImage":         
-              if(item[f.field] && item[f.field].length>0) {
+              if(item[f.field] && item[f.field] && item[f.field].length>0) {
                 tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"])});
               }
               break;  
@@ -170,7 +170,7 @@ function json() {
               }
               break;
             case "ascent":
-              if(item[f.field].length>0 && item[f.field].substring(0,2)!=="0 ") {
+              if(item[f.field] && item[f.field].length>0 && item[f.field].substring(0,2)!=="0 ") {
                 tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field]+" elevation" || "")+"&nbsp;"});            
               }
               break;
