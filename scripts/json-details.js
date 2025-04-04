@@ -161,9 +161,9 @@ function json() {
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'" alt="'+g.rootURL+item[f.field]+'" class="map">'});
               break;  
             case "media":         
-              //if(item[f.field] && item[f.field].length>0) {
+              if(item[f.field] && item[f.field].length>0) {
                 tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:mediaCollection(g.rootURL, item["media"])});
-              //}
+              }
               break;  
             case "wrap":  
               if(item[f.field] && item[f.field].length>0) {
