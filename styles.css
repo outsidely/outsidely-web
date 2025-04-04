@@ -85,9 +85,15 @@ img.map {
   border:1px solid black;
 }
 
+img.pic {
+  width: 50%;
+  border:1px solid black;
+  display:inline;
+}
+
 div.dump {
   font-family:"monospace";
-  display:none;
+  display:block;
 }
 
 div#nexturl {

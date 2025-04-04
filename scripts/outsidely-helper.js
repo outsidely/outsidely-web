@@ -215,11 +215,28 @@ function selectActivity(value, actTypes) {
   return rtn;
 }
 
-function detailImageLink(item, rootURL, userid, activityid) {
+function detailImageLink(item, rootURL, userid, activityid, media) {
   var rtn = "";
   var url = rootURL;
-  if(item && url && userid && activityid) {
-    rtn = '<a href="details.html?userid='+userid+'&activityid='+activityid+'"><img src="' + url + item+'" alt="'+ url + item+'" class="map"></a>';
+  if(media && media.length==0) {
+    if(item && url && userid && activityid) {
+      rtn = '<a href="details.html?userid='+userid+'&activityid='+activityid+'"><img src="' + url + item+'" alt="'+ url + item+'" class="map"></a>';
+    }
+  } else {
+    rtn = '<a href="details.html?userid='+userid+'&activityid='+activityid+'"><img src="' + url + media[0].mediapreviewurl +'" alt="'+ url + media[0].mediapreviewurl+'" class="map"></a>';
+  }
+  return rtn;
+}
+
+function mediaCollection(rootURL, media) {
+  var rtn = "";
+  var url = rootURL;
+  if(media && media.length>0) {
+    if(url) {
+      for(const m of media) {
+        rtn += '<img src="' + url + m.mediapreviewurl +'" alt="'+ url + m.mediapreviewurl+'" class="pic"></a>';
+      }  
+    }
   }
   return rtn;
 }

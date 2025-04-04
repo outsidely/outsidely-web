@@ -97,7 +97,7 @@ function json() {
   function dump() {
     var elm = d.find("dump");
     elm.innerText = JSON.stringify(g.msg, null, 2);
-    elm.style.display = "none";
+    elm.style.display = "block";
   }
   
   // handle next page of data
@@ -153,7 +153,7 @@ function json() {
               break;    
             case "detailImage":         
               if(item[f.field] && item[f.field] && item[f.field].length>0) {
-                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"])});
+                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"], item["media"])});
               }
               break;  
             case "image":         

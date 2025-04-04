@@ -154,11 +154,16 @@ function json() {
               break;    
             case "detailImage":         
               if(item[f.field] && item[f.field].length>0) {
-                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"])});
+                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:detailImageLink(item[f.field],g.rootURL,item["userid"], item["activityid"],item["media"])});
               }
               break;  
             case "image":         
               tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:'<img src="' + g.rootURL + item[f.field]+'" alt="'+g.rootURL+item[f.field]+'" class="map">'});
+              break;  
+            case "media":         
+              //if(item[f.field] && item[f.field].length>0) {
+                tr_data = d.data_row({className:"item "+f, text:(f.prompt||f.field), value:mediaCollection(g.rootURL, item["media"])});
+              //}
               break;  
             case "wrap":  
               if(item[f.field] && item[f.field].length>0) {
