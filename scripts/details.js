@@ -149,9 +149,20 @@ function initChart() {
 }
 
 function createChart(in_data) {
+
   activitydata = in_data["data"];
-  const ctx = document.getElementById('chart');
-  new Chart(ctx, {
+  
+  L.circleMarker([activitydata[activitydata.length-1]['latitude'], activitydata[activitydata.length-1]['longitude']]).setStyle({color: 'red', radius: 5}).addTo(map);
+  L.circleMarker([activitydata[0]['latitude'], activitydata[0]['longitude']]).setStyle({color: 'green', radius: 10}).addTo(map);
+
+  document.getElementById('chart').addEventListener('mouseout', function(e) {
+    if (marker)
+      {
+        map.removeLayer(marker);
+      }
+  });
+
+  new Chart(document.getElementById('chart'), {
     type: 'line',
     data: {
       datasets: [{
@@ -160,13 +171,15 @@ function createChart(in_data) {
           y: row.elevation,
         })),
         borderWidth: 1,
-        fill: true
+        fill: true,
+        cubicInterpolationMode: 'default'
       }]
     },
     options: {
       elements: {
         point: {
-          radius: 0
+          radius: 0,
+          pointHitRadius: 10
         }
       },
       tooltips: {
@@ -189,13 +202,17 @@ function createChart(in_data) {
         }
       },
       onHover: (e, i) => {
-        loc = activitydata[i[0].index];
-        if (marker)
+        if (i[0])
         {
-          map.removeLayer(marker);
+          loc = activitydata[i[0].index];
+          if (marker)
+          {
+            map.removeLayer(marker);
+          }
+          marker = L.marker([loc['latitude'], loc['longitude']]).addTo(map);
         }
-        marker = L.marker([loc['latitude'], loc['longitude']]).addTo(map);
       }
     }
   });
+
 }
