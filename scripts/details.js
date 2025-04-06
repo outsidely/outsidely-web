@@ -112,9 +112,8 @@ var layer;
 var activitydata = [];
 var marker;
 
-function getCookieValue() {
-  const tmp = (name) => (document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '');
-  return tmp
+function getCookieValue(name) {
+  return document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
 }
 
 function initMap() {
