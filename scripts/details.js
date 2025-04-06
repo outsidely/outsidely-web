@@ -164,6 +164,11 @@ function createChart(in_data) {
       }]
     },
     options: {
+      elements: {
+        point: {
+          radius: 0
+        }
+      },
       tooltips: {
         mode: 'index',
         intersects: false
