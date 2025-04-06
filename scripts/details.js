@@ -112,10 +112,6 @@ var layer;
 var activitydata = [];
 var marker;
 
-function getCookieValue(name) {
-  return document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || ''
-}
-
 function initMap() {
   map = L.map('map').setView([34, -84], 13);
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -123,6 +119,7 @@ function initMap() {
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   }).addTo(map);
   activityid = new URLSearchParams(window.location.search).get('activityid');
+  const getCookieValue = (name) => (document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '');
   $.ajax({
     url:"https://outsidely-geo-app.azurewebsites.net/api/data/geojson/" + activityid, 
     headers: {"Authorization": "Basic " + getCookieValue("key")}, 
@@ -140,6 +137,7 @@ function addGeoJson(geojson){
 
 function initChart() {
   activityid = new URLSearchParams(window.location.search).get('activityid');
+  const getCookieValue = (name) => (document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '');
   $.ajax({
     url:"https://outsidely-geo-app.azurewebsites.net/api/data/activity/" + activityid, 
     headers: {"Authorization": "Basic " + getCookieValue("key")}, 
