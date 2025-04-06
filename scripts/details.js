@@ -105,3 +105,95 @@
     assigned:   {target:"single", func:httpGet, href:"/task/?assignedUser={id}", prompt:"Assigned Tasks"}
   };
   */
+
+// map+chart adds
+var map;
+var layer;
+var activitydata = [];
+var marker;
+
+function getCookieValue() {
+  const tmp = (name) => (document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '');
+  return tmp
+}
+
+function initMap() {
+  map = L.map('map').setView([34, -84], 13);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+  }).addTo(map);
+  activityid = new URLSearchParams(window.location.search).get('activityid');
+  $.ajax({
+    url:"https://outsidely-geo-app.azurewebsites.net/api/data/geojson/" + activityid, 
+    headers: {"Authorization": "Basic " + getCookieValue("key")}, 
+    dataType: "json", 
+    success: function(response){
+      addGeoJson(response);
+    }
+  });
+}
+
+function addGeoJson(geojson){
+  layer = L.geoJSON(geojson).addTo(map);
+  map.fitBounds(layer.getBounds());
+}
+
+function initChart() {
+  activityid = new URLSearchParams(window.location.search).get('activityid');
+  $.ajax({
+    url:"https://outsidely-geo-app.azurewebsites.net/api/data/activity/" + activityid, 
+    headers: {"Authorization": "Basic " + getCookieValue("key")}, 
+    dataType: "json", 
+    success: function(response){
+      createChart(response);
+    }
+  });
+}
+
+function createChart(in_data) {
+  activitydata = in_data["data"];
+  const ctx = document.getElementById('chart');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      datasets: [{
+        data: activitydata.map(row => ({
+          x: row.timestamp,
+          y: row.elevation,
+        })),
+        borderWidth: 1,
+        fill: true
+      }]
+    },
+    options: {
+      tooltips: {
+        mode: 'index',
+        intersects: false
+      },
+      hover: {
+        mode: 'index',
+        intersect: false
+      },
+      maintainAspectRatio: false,
+      plugins: {
+          legend: {
+          display: false
+        }
+      },
+      scales: {
+        x: {
+          display: false
+        }
+      },
+      onHover: (e, i) => {
+        loc = activitydata[i[0].index];
+        if (marker)
+        {
+          map.removeLayer(marker);
+        }
+        marker = L.marker([loc['latitude'], loc['longitude']]).addTo(map);
+      }
+    }
+  });
+}
