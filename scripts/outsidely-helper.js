@@ -241,6 +241,8 @@ function mediaCollection(rootURL, media) {
   return rtn;
 }
 
+function initProps() {
+}
 // cookie support
 function setCookie(name,value,days) {
   var rtn = false;

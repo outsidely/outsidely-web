@@ -85,6 +85,20 @@ img.map {
   border:1px solid black;
 }
 
+#propCount {
+  position: relative; 
+  top: -0.5em; 
+  font-size: 80%;
+}
+
+li.commentHeader {
+  font-weight: bold;
+}
+img.props {
+  width:30px;
+  display:inline;
+}
+
 img.pic {
   width: 50%;
   border:1px solid black;

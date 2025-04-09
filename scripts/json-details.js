@@ -64,6 +64,8 @@ function json() {
     items();
     actions();
     clearForm();
+    setProps();
+    setComments();
   }
 
   // set response object pointer
@@ -190,6 +192,16 @@ function json() {
                   tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
                 }
                 break;
+            case "comments":
+                if(item[f.field]) {
+                  tr_data = d.data_row({className:"item "+f.field, text:"", value:setComments()+"&nbsp;"});            
+                }
+                break;
+            case "props":
+              if(item[f.field]) {
+                tr_data = d.data_row({className:"item "+f.field, text:"", value:setProps()+"&nbsp;"});            
+              }
+              break;
             default:
               tr_data = d.data_row({className:"item "+f.field, text:(f.prompt||f.field), value:(item[f.field] || "")+"&nbsp;"});            
               break;
@@ -205,6 +217,39 @@ function json() {
     }
   }
   
+  // set props display
+  function setProps() {
+    var item, count, txt;
+    txt = "";
+    item = g.msg.activities[0];
+    if(item.props) {
+      count = item.props.length;
+      if(count>0) {
+        txt += "<br /><span class='props'>"+count+" props</span><br />";
+      }
+    }
+    return txt;
+  }
+
+  function setComments() {
+    var item, txt;
+
+    txt = "";
+    item = g.msg.activities[0];
+    if(item.comments) {
+      coll = item.comments;
+      if(coll.length>0) {
+        txt = "<ul>";
+        txt += "<li class='commentHeader'>Comments:</li>";
+        for (c of coll) {
+         txt += "<li>" + c.comment + " (" + c.userid + ")</li>"
+        }
+        txt += "</ul>";
+      }
+    }
+    return txt;
+  }
+
   // handle item-level actions
   function itemActions(el, item, single) {
     var act, actions, link, a;

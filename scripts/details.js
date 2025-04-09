@@ -55,10 +55,9 @@
     {field:"description",prompt:"&nbsp;",type:"wrap"},
     {field:"time",prompt:"&nbsp;",type:"time"},
     {field:"speed",prompt:"&nbsp;",type:"speed"},
-    {field:"previewurl",prompt:"&nbsp;",type:"image"},
+    {field:"props",prompt:"&nbsp;",type:"props"},
     {field:"comments",prompt:"&nbsp;",type:"comments"},
-    {field:"media",prompt:"&nbsp;",type:"media"},
-    {field:"props",prompt:"&nbsp;",type:"props"}
+    {field:"media",prompt:"&nbsp;",type:"media"}
   ];
  
   // user object content
